@@ -1,0 +1,368 @@
+# -*- coding: utf-8 -*-
+
+#+TITLE: Org-mode Teaser Demo
+#+AUTHOR: Karl Voit
+
+#+STARTUP: hidestars
+
+#+STARTUP: overview   (or: showall, content, showeverything)
+http://orgmode.org/org.html#Visibility-cycling
+
+#+TODO: TODO(t) NEXT(n) STARTED(s) WAITING(w@/!) SOMEDAY(S!) | DONE(d!/!) CANCELLED(c@/!)
+http://orgmode.org/org.html#Per_002dfile-keywords
+
+#+TAGS: important(i) private(p)
+#+TAGS: @HOME(h) @OFFICE(o)
+http://orgmode.org/org.html#Setting-tags
+
+* Setting Up the Demo                                              :noexport:
+
+- [ ] start key visualization tool like [[http://pabloseminario.com/projects/screenkey/][screenkey]]
+- [ ] check font size
+  - de/increase by ~S-Mousebutton1~
+- [X] disable creation of PROPERTIES drawer containing CREATED timestamp:
+  - M-: (org-expiry-deinsinuate)
+  - see: Local Variables below
+
+
+* Org-mode Principles and Advantages
+** text files
+
+- text as the lowest common denominator
+- portable
+- future-proof
+- process it with grep, python, ...
+- VCS like git, Subversion, ...
+- easy synchronization
+- advanced search & replace everywhere
+- ...
+
+** easy to learn
+
+- outliner (~5 minutes)
+- todo-management (~10 minutes)
+- GTD implementation (~15 minutes)
+- more and more advanced topics
+  - one by one
+  - depending on personal requirements
+
+** scales
+
+- performance
+- learn/use only those parts you need
+
+** wiki-like
+
+- personal knowledge-base
+- internal and external links
+- very open to external files, APIs, ...
+
+** Meta-data
+
+- define as much as you need
+- you've got all possibilties
+
+
+* A Subset(!) of Org-mode Basics
+
+Find this document on https://github.com/novoid/org-mode-workshop
+
+** outlining ([[http://orgmode.org/org.html#Document-Structure][docu]])
+
+- headlines
+- levels
+- visibility cycling   ~TAB~
+- motion
+  - next heading       ~C-c C-n~
+  - previous heading   ~C-c C-p~
+- new heading          ~C-RET~
+- modifying levels
+  - move up/down       ~M-UP/DOWN~
+  - promote            ~M-LEFT~
+  - demote             ~M-RIGHT~
+
+** syntax [[http://orgmode.org/org.html#Emphasis-and-monospace][(docu)]]
+
+- *bold*
+- /italic/
+- _underline_
+- +strike through+
+- =code=
+
+: small example
+
+#+COMMENT: this will never be exported
+
+#+BEGIN_COMMENT
+multi
+line
+comment
+#+END_COMMENT
+
+*** COMMENT: no exported either
+
+foo bar
+
+** lists [[http://orgmode.org/org.html#Plain-lists][(docu)]]
+
+- new item    ~M-RET~
+- move item   ~M-LEFT/RIGHT/UP/DOWN~
+
+simple list:
+- Emacs
+- Org-mode
+- Lists
+
+enumerate:
+1. Emacs
+2. Org-mode
+3. Lists
+
+check lists:
+
+** links [[http://orgmode.org/org.html#Hyperlinks][(docu)]]
+
+: [[link]]
+: [[link][description]]
+
+- id:myexampleid
+- [[file:~/.zshrc.local]]
+- http://orgmode.org
+  - [[http://orgmode.org/org.html#External-links][docu: list of external links]]
+- custom links: [[contact:John%20Smith][contact:John Smith]]
+  - [[http://orgmode.org/org.html#Link-abbreviations][docu: link abbrevations]]
+
+- inserting link   ~C-c C-l~
+
+*** heading with PROPERTIES drawer containing ID
+:PROPERTIES:
+:ID: myexampleid
+:END:
+
+foo bar
+ 
+** tags [[http://orgmode.org/org.html#Tags][(docu)]]
+
+- manage tags   ~C-c C-c~
+
+*** example                                                           :tag:
+
+** tables simple [[http://orgmode.org/org.html#Tables][(docu)]] 
+
+-> DEMO
+
+- creating rows/columns
+  - headers
+- moving rows/columns    ~M-LEFT/RIGHT/UP/DOWN~
+
+** tables complex ([[http://orgmode.org/org.html#The-spreadsheet][docu]], [[http://orgmode.org/worg/org-tutorials/org-spreadsheet-intro.html][tutorial]])
+
+#+TBLNAME: mydemo-USD-EUR-rate
+| *US-Dollar* |      *EUR* |
+|           1 | 0.76481836 |
+
+|     *When* | *What*                 | *USD* | *EUR* |
+|------------+------------------------+-------+-------|
+| 2012-02-03 | Taxi Graz-Airport      |       | 18.00 |
+| 2012-02-03 | Taxi Seattle Airport   | 25.00 | 19.12 |
+| 2012-02-13 | Taxi                   |  7.00 |  5.35 |
+| 2012-02-14 | Taxi                   |  8.00 |  6.12 |
+| 2012-02-17 | Taxi to Airport SeaTac | 35.00 | 26.77 |
+| 2012-02-22 | Taxi Airport-Graz      |       | 16.00 |
+|------------+------------------------+-------+-------|
+|            |                        |       | 91.36 |
+#+TBLFM: @>$4=vsum(@I$4..@II$4);%.2f::@3$4=@3$3*remote(mydemo-USD-EUR-rate,@2$2);%.2f::@4$4=@4$3*remote(mydemo-USD-EUR-rate,@2$2);%.2f::@5$4=@5$3*remote(mydemo-USD-EUR-rate,@2$2);%.2f::@6$4=@6$3*remote(mydemo-USD-EUR-rate,@2$2);%.2f
+
+- update values           ~C-c C-c~
+- visualize rows/columns  ~C-c }~
+- edit formulas           ~C-c '~
+- [[http://orgmode.org/worg/org-tutorials/org-spreadsheet-intro.html#sec-7][debugging formulas]]
+
+** states
+*** making dependencies explicit
+
+- see only tasks that are *not* depending on other *open* tasks
+  - see only things that can be done now
+- http://orgmode.org/worg/org-contrib/org-depend.html
+- to define workflows (see demo below)
+
+** capture, refile, archive
+** dates & time
+
+- insert active           ~C-c .~
+- insert inactive         ~C-c !~
+- interactively change    ~S-RIGHT/LEFT~
+
+** agenda
+
+- invoke Agenda view      ~C-c a a~
+- jump to date ~j~
+- view for day ~v d~, week ~v w~, or month ~v m~
+- moving forward ~f~ and backward ~b~
+- filtering by tags, strings, ...
+
+** source code
+
+- python "Hello World"
+- switch to language specific buffer  ~C-c '~
+
+#+BEGIN_SRC python
+  def foo(argument):
+  {
+      print "Hello World"
+  }
+#+END_SRC
+
+** babel
+
+*** babel simple ([[http://orgmode.org/org.html#Working-With-Source-Code][doc]])
+
+- some examples are taken from [[http://orgmode.org/worg/org-contrib/babel/intro.html][Worg: Introduction to Babel]]
+- http://orgmode.org/org.html#Languages
+  - 2012-04-23: 35(!) languages
+
+**** shell
+
+#+BEGIN_SRC sh
+pwd
+#+END_SRC
+
+**** ruby
+
+#+begin_src ruby
+require 'date'
+"This file was last evaluated on #{Date.today}"
+#+end_src
+
+**** python
+
+#+BEGIN_SRC python 
+return 42 + 7
+#+END_SRC
+
+**** ditaa
+
+#+begin_src ditaa :file blue.png :cmdline -r
++---------+
+| cBLU    |
+|         |
+|    +----+
+|    |cPNK|
+|    |    |
++----+----+
+#+end_src
+
+
+*** babel advanced
+
+**** session with shell and R
+
+#+name: directories
+#+begin_src sh :results replace
+  cd ~/archive/events_memories && du -sc * |grep -v total
+#+end_src
+
+
+Using result set "directories" from above as "dirs" in R below:
+
+#+name: directory-pie-chart(dirs = directories)
+#+begin_src R :session R-pie-example :file ./dirs.png
+  pie(dirs[,1], labels = dirs[,2])
+#+end_src
+
+** export formats ([[http://orgmode.org/org.html#Exporting][docu]])
+
+- ASCII/Latin-1/UTF-8 export
+- HTML
+- LaTeX
+- PDF
+- DocBook
+- OpenDocument Text
+- TaskJuggler
+- Freemind
+- XOXO
+- iCalendar
+
+** Mobile-org ([[http://orgmode.org/org.html#MobileOrg][docu]])
+
+- great [[http://mobileorg.ncogni.to/][iOS app]]
+  - no iOS on my side
+- "advanced-beta" of [[http://wiki.github.com/matburt/mobileorg-android/][Android app]]
+
+** customizations
+
+- per configuration
+- per file
+- per heading
+
+** where to find documentation
+
+- http://orgmode.org
+- Documentation: http://orgmode.org/org.html
+- much much [[http://orgmode.org/org-mode-documentation.html][more]]
+- great [[http://orgmode.org/org-mode-support.html][community]], active [[http://lists.gnu.org/mailman/listinfo/emacs-orgmode][mailinglist]] ([[http://news.gmane.org/gmane.emacs.orgmode][gmane]])
+- this document: https://github.com/novoid/org-mode-workshop
+
+
+* Org-mode Applied
+
+- everybody has *different requirements*
+- *Org-mode as a Lego toolbox* to build customized solutions
+- these are *my personal* solutions
+
+** contacts
+
+- contacts forming a hierarchy which reflects their relations
+- person-specific tasks, events, ... done right
+  - mixture of things related to person
+- meta-persons like "parents" or "Simpsons Family"
+
+- sparse trees
+
+** references
+
+- [[file:~/share/all/org-mode/references.org][My Reference-Management]]
+- adding a reference (from bibtex file)
+  - tagging
+  - link to PDF
+- integrated annotated PDF files
+
+** workflows
+
+- example: gdipruef at id:teaser-tests
+
+** memacs
+
+- What happened on <2008-09-15 Mon>?
+- Documentation and Source: https://github.com/novoid/Memacs
+
+
+
+* Other Demo Sources
+
+- http://orgmode.org/orgcard.txt
+- https://github.com/vxc/org-mode-ws
+- http://pascal.iiit.ac.in/~itws2/
+  - http://pascal.iiit.ac.in/~itws2/topics/org-mode/test.org.txt
+- http://dto.github.com/notebook/orgtutorial.html
+- [[http://orgmode.org/worg/org-tutorials/org-beamer/tutorial.html][Writing Beamer presentations in org-mode]]
+- http://www.suenkler.info/emacs-orgmode.html
+
+
+* still missing topics
+** TODO Column view ([[http://orgmode.org/org.html#Column-view][docu]])
+
+** clocking [[http://orgmode.org/org.html#Clocking-work-time][(docu]])
+
+
+* Test                                                             :noexport:
+:PROPERTIES:
+:ID: teaser-tests
+:END:
+
+gdipruef
+
+* Local Variables                                                  :noexport:
+# Local Variables:
+# eval: (org-expiry-deinsinuate)
+# End:
