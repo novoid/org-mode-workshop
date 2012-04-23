@@ -1,7 +1,20 @@
 # -*- coding: utf-8 -*-
-
-#+TITLE: Org-mode Teaser Demo
-#+AUTHOR: Karl Voit
+* Header Information                                               :noexport:
+#+TITLE:     Org-mode Teaser Demo
+#+AUTHOR:    Karl Voit
+#+EMAIL:     tools@Karl-Voit.at
+#+DATE:      2012-04-23 Mon
+#+DESCRIPTION:
+#+KEYWORDS:
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   
+#+LINK_HOME: 
+#+XSLT:
 
 #+STARTUP: hidestars
 
@@ -14,6 +27,11 @@ http://orgmode.org/org.html#Per_002dfile-keywords
 #+TAGS: important(i) private(p)
 #+TAGS: @HOME(h) @OFFICE(o)
 http://orgmode.org/org.html#Setting-tags
+
+#+NOstartup: beamer
+#+NOLaTeX_CLASS: beamer
+#+NOLaTeX_CLASS_OPTIONS: [bigger]
+#+NOBEAMER_FRAME_LEVEL: 2
 
 * Setting Up the Demo                                              :noexport:
 
@@ -80,6 +98,11 @@ Find this document on https://github.com/novoid/org-mode-workshop
   - move up/down       ~M-UP/DOWN~
   - promote            ~M-LEFT~
   - demote             ~M-RIGHT~
+
+*** encryption
+
+- whole Org-mode files
+- selective headlines using :crypt:
 
 ** syntax [[http://orgmode.org/org.html#Emphasis-and-monospace][(docu)]]
 
@@ -187,11 +210,16 @@ foo bar
 - to define workflows (see demo below)
 
 ** capture, refile, archive
+
+- capture      ~C-c c~
+- refile       ~C-c C-w~
+- archive      ~C-c C-x C-a~
+
 ** dates & time
 
-- insert active           ~C-c .~
-- insert inactive         ~C-c !~
-- interactively change    ~S-RIGHT/LEFT~
+- insert active <2012-04-23 Mon>     ~C-c .~
+- insert inactive [2012-04-23 Mon]   ~C-c !~
+- interactively change               ~S-RIGHT/LEFT/UP/DOWN~
 
 ** agenda
 
@@ -200,7 +228,7 @@ foo bar
 - view for day ~v d~, week ~v w~, or month ~v m~
 - moving forward ~f~ and backward ~b~
 - filtering by tags, strings, ...
-
+  
 ** source code
 
 - python "Hello World"
@@ -270,6 +298,13 @@ Using result set "directories" from above as "dirs" in R below:
   pie(dirs[,1], labels = dirs[,2])
 #+end_src
 
+** Mobile-org ([[http://orgmode.org/org.html#MobileOrg][docu]])
+
+- great [[http://mobileorg.ncogni.to/][iOS app]]
+  - no iOS on my side
+- "advanced-beta" of [[http://wiki.github.com/matburt/mobileorg-android/][Android app]]
+  - ssh, scp, WEBDAV, gpg encryption, ...
+
 ** export formats ([[http://orgmode.org/org.html#Exporting][docu]])
 
 - ASCII/Latin-1/UTF-8 export
@@ -283,11 +318,8 @@ Using result set "directories" from above as "dirs" in R below:
 - XOXO
 - iCalendar
 
-** Mobile-org ([[http://orgmode.org/org.html#MobileOrg][docu]])
-
-- great [[http://mobileorg.ncogni.to/][iOS app]]
-  - no iOS on my side
-- "advanced-beta" of [[http://wiki.github.com/matburt/mobileorg-android/][Android app]]
+- DEMO: export this as PDF (plain)
+- DEMO: export this as PDF (beamer)
 
 ** customizations
 
@@ -297,11 +329,11 @@ Using result set "directories" from above as "dirs" in R below:
 
 ** where to find documentation
 
-- http://orgmode.org
-- Documentation: http://orgmode.org/org.html
-- much much [[http://orgmode.org/org-mode-documentation.html][more]]
-- great [[http://orgmode.org/org-mode-support.html][community]], active [[http://lists.gnu.org/mailman/listinfo/emacs-orgmode][mailinglist]] ([[http://news.gmane.org/gmane.emacs.orgmode][gmane]])
 - this document: https://github.com/novoid/org-mode-workshop
+- project: http://orgmode.org
+  - great [[http://orgmode.org/org-mode-support.html][community]], active [[http://lists.gnu.org/mailman/listinfo/emacs-orgmode][mailinglist]] ([[http://news.gmane.org/gmane.emacs.orgmode][gmane]])
+  - documentation: http://orgmode.org/org.html
+- even [[http://orgmode.org/org-mode-documentation.html][more documentation]] 
 
 
 * Org-mode Applied
@@ -331,11 +363,25 @@ Using result set "directories" from above as "dirs" in R below:
 
 - example: gdipruef at id:teaser-tests
 
-** memacs
+** Memacs
 
 - What happened on <2008-09-15 Mon>?
 - Documentation and Source: https://github.com/novoid/Memacs
 
+*** existing modules
+
+- RSS
+- CSV
+- ISO datestamps in filenames
+- git commits
+- Subversion commits
+- iCal
+- mbox
+- maildir
+- IMAP
+- Android Phonecalls
+- Android Text Messages (SMS)
+- EXIF (photographs)
 
 
 * Other Demo Sources
@@ -350,8 +396,10 @@ Using result set "directories" from above as "dirs" in R below:
 
 
 * still missing topics
-** TODO Column view ([[http://orgmode.org/org.html#Column-view][docu]])
 
+Things I did not include yet but are worth mentioning:
+
+** TODO Column view ([[http://orgmode.org/org.html#Column-view][docu]])
 ** clocking [[http://orgmode.org/org.html#Clocking-work-time][(docu]])
 
 
