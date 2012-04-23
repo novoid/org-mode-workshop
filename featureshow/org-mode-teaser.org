@@ -327,13 +327,25 @@ Using result set "directories" from above as "dirs" in R below:
 - per file
 - per heading
 
-** where to find documentation
+
+* Documentation
 
 - this document: https://github.com/novoid/org-mode-workshop
 - project: http://orgmode.org
   - great [[http://orgmode.org/org-mode-support.html][community]], active [[http://lists.gnu.org/mailman/listinfo/emacs-orgmode][mailinglist]] ([[http://news.gmane.org/gmane.emacs.orgmode][gmane]])
   - documentation: http://orgmode.org/org.html
+  - [[http://orgmode.org/worg/org-people.html#sec-22][My userpage on Worg]]
 - even [[http://orgmode.org/org-mode-documentation.html][more documentation]] 
+
+** Other Demo Sources
+
+- http://orgmode.org/orgcard.txt
+- https://github.com/vxc/org-mode-ws
+- http://pascal.iiit.ac.in/~itws2/
+  - http://pascal.iiit.ac.in/~itws2/topics/org-mode/test.org.txt
+- http://dto.github.com/notebook/orgtutorial.html
+- [[http://orgmode.org/worg/org-tutorials/org-beamer/tutorial.html][Writing Beamer presentations in org-mode]]
+- http://www.suenkler.info/emacs-orgmode.html
 
 
 * Org-mode Applied
@@ -384,18 +396,7 @@ Using result set "directories" from above as "dirs" in R below:
 - EXIF (photographs)
 
 
-* Other Demo Sources
-
-- http://orgmode.org/orgcard.txt
-- https://github.com/vxc/org-mode-ws
-- http://pascal.iiit.ac.in/~itws2/
-  - http://pascal.iiit.ac.in/~itws2/topics/org-mode/test.org.txt
-- http://dto.github.com/notebook/orgtutorial.html
-- [[http://orgmode.org/worg/org-tutorials/org-beamer/tutorial.html][Writing Beamer presentations in org-mode]]
-- http://www.suenkler.info/emacs-orgmode.html
-
-
-* still missing topics
+* Still Missing Topics
 
 Things I did not include yet but are worth mentioning:
 
@@ -403,7 +404,7 @@ Things I did not include yet but are worth mentioning:
 ** clocking [[http://orgmode.org/org.html#Clocking-work-time][(docu]])
 
 
-* Test                                                             :noexport:
+* Testing section                                                  :noexport:
 :PROPERTIES:
 :ID: teaser-tests
 :END:
