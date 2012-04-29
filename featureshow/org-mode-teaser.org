@@ -236,10 +236,8 @@ foo bar
 
 #+BEGIN_SRC python
   def foo(argument):
-  {
-      print "Hello World"
-  }
-#+END_SRC
+       print "Hello World"
+ #+END_SRC
 
 ** babel
 
