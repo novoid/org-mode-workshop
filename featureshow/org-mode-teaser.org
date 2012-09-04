@@ -99,6 +99,38 @@ Find this document on https://github.com/novoid/org-mode-workshop
   - promote            ~M-LEFT~
   - demote             ~M-RIGHT~
 
+*** Creating
+
+- [ ] DEMO: create headings
+
+*** Using
+
+- [ ] DEMO: visibility cycling
+- [ ] DEMO: move headings
+
+This is a quite boring text just to show some body content.
+
+**** This is the 1st heading
+
+This is a quite boring text just to show some body content.
+
+***** Sub-heading 1
+
+This is a quite boring text just to show some body content.
+
+**** This is another heading
+
+This is a quite boring text just to show some body content.
+
+***** Sub-heading 2
+
+This is a quite boring text just to show some body content.
+
+**** This is yet another heading
+**** OK, now this is getting boring :-)
+
+
+
 *** encryption
 
 - whole Org-mode files
@@ -131,6 +163,8 @@ foo bar
 - new item    ~M-RET~
 - move item   ~M-LEFT/RIGHT/UP/DOWN~
 
+*** examples
+
 simple list:
 - Emacs
 - Org-mode
@@ -142,6 +176,38 @@ enumerate:
 3. Lists
 
 check lists:
+
+*** Simple
+
+- [ ] DEMO: create simple lists and move items around
+
+*** Checklists
+
+- Clean out garage
+  1. [ ] get stuff out
+     - be careful with that axe, Eugene
+  2. [ ] get rid of old stuff
+     - using eBay?
+     - try to use rubbish as birthday presents for family
+  3. [ ] repaint garage
+  4. [ ] put stuff back in
+
+*** Headings with TODO items
+
+**** TODO Clean out garage [0/4]
+
+***** TODO get stuff out
+
+- be careful with that axe, Eugene
+
+***** TODO get rid of old stuff
+
+- using eBay?
+- try to use rubbish as birthday presents for family
+
+***** TODO repaint garage
+
+***** TODO put stuff back in
 
 ** links [[http://orgmode.org/org.html#Hyperlinks][(docu)]]
 
@@ -172,13 +238,15 @@ foo bar
 
 ** tables simple [[http://orgmode.org/org.html#Tables][(docu)]] 
 
--> DEMO
+- [ ] DEMO: create table
 
 - creating rows/columns
   - headers
 - moving rows/columns    ~M-LEFT/RIGHT/UP/DOWN~
 
 ** tables complex ([[http://orgmode.org/org.html#The-spreadsheet][docu]], [[http://orgmode.org/worg/org-tutorials/org-spreadsheet-intro.html][tutorial]])
+
+- import data from CSV file: ~org-table-import~
 
 #+TBLNAME: mydemo-USD-EUR-rate
 | *US-Dollar* |      *EUR* |
@@ -316,8 +384,8 @@ Using result set "directories" from above as "dirs" in R below:
 - XOXO
 - iCalendar
 
-- DEMO: export this as PDF (plain)
-- DEMO: export this as PDF (beamer)
+- [ ] DEMO: export this as PDF (plain)
+- [ ] DEMO: export this as PDF (beamer)
 
 ** customizations
 
@@ -412,4 +480,7 @@ gdipruef
 * Local Variables                                                  :noexport:
 # Local Variables:
 # eval: (org-expiry-deinsinuate)
+# mode: auto-fill
+# mode: flyspell
+# eval: (ispell-change-dictionary "en_US")
 # End:
