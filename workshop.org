@@ -1,0 +1,169 @@
+# -*- coding: utf-8 -*-
+* Header Information                                               :noexport:
+#+TITLE:     Org-mode Teaser Demo
+#+AUTHOR:    Karl Voit
+#+EMAIL:     tools@Karl-Voit.at
+#+DATE:      2012-04-23 Mon
+#+DESCRIPTION:
+#+KEYWORDS:
+#+LANGUAGE:  en
+#+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   
+#+LINK_HOME: 
+#+XSLT:
+
+#+STARTUP: hidestars
+
+#+STARTUP: overview   (or: showall, content, showeverything)
+http://orgmode.org/org.html#Visibility-cycling
+
+#+TODO: TODO(t) NEXT(n) STARTED(s) WAITING(w@/!) SOMEDAY(S!) | DONE(d!/!) CANCELLED(c@/!)
+http://orgmode.org/org.html#Per_002dfile-keywords
+
+#+TAGS: important(i) private(p)
+#+TAGS: @HOME(h) @OFFICE(o)
+http://orgmode.org/org.html#Setting-tags
+
+#+NOstartup: beamer
+#+NOLaTeX_CLASS: beamer
+#+NOLaTeX_CLASS_OPTIONS: [bigger]
+#+NOBEAMER_FRAME_LEVEL: 2
+
+* Workshop
+
+** Greetings, Introduction, Organization
+
+- breaks
+- drinking
+  - vending machines for pops and coffee
+
+** About me 
+
+- Flipchart
+- before 2003: studied Telematics at [[http://www.TUGraz.at][Graz University of Technology]]
+- 2003-2008: automotive industry ([[http://v2c2.at][vif]])
+- 2009-2012: PIM researcher ([[http://tagstore.org]])
+  - organizing files and folders
+  - an alternative to strict hierarchies of folders
+  - tagging
+- my editor(s) history
+  - ... I am *no Emacs-guru*!
+  - started with Emacs in the 90s
+  - never learned (E)LISP
+    - although tried it several times
+  - just copy & paste stuff which worked or not
+  - switched to (g)vim approx. 2004
+    - Emacs not available on AIX I had to use
+    - speed
+    - wanted to learn "the other one"
+    - found vim shortcuts more logical
+    - still using gvim for writing emails ([[http://www.mutt.org/][mutt]]), usenet postings
+      ([[http://slrn.sourceforge.net/][slrn]]), config files, ...
+    - Book: [[http://www.amazon.de/gp/product/3826681908/ref%3Das_li_ss_tl?ie%3DUTF8&camp%3D1638&creative%3D19454&creativeASIN%3D3826681908&linkCode%3Das2&tag%3Dkarlssuder-21][vim 7.3 GE-PACKT (mitp Ge-packt)]] ~20€
+  - returned to GNU/Emacs23 just because of an eye-opening
+    Org-mode-demo on [[http://Linuxtage.at][linux days Graz]] in 2011
+    - learned about GNU/Emacs basic concepts and found a more logic
+      structure than expected :-)
+    - Book: [[http://www.amazon.de/gp/product/0596006489/ref%3Das_li_ss_tl?ie%3DUTF8&camp%3D1638&creative%3D19454&creativeASIN%3D0596006489&linkCode%3Das2&tag%3Dkarlssuder-21][Learning GNU Emacs]] ~28€
+  - since 2011: Org-mode is my central collection of information for
+    just about everything
+
+** About Attendees
+
+- presentation of each attendee
+  - background
+  - expectations
+
+** Course Material
+
+- Course material is (or will be) online at [[https://github.com/novoid/org-mode-workshop][org-mode-workshop on github]]
+
+** Feature Show (my personal requirements)
+
+- Motivation
+  - show, how *I* am using Org-mode
+    - *many things here are highly personal according to my requirements*
+    - just a thought-provoking impulse
+    - *feedback/suggestions/thoughts* welcome!
+  - what is of interest for the attendees
+
+- My Agenda
+
+- Capture stuff
+
+- Reproducible Research
+  - from one Org-file to a ready-to-submit ACM paper in one step
+  - [[https://github.com/novoid/orgmode-ACM-template][orgmode-ACM-template on github]]
+
+- My current Org-mode file management (under constant change!)
+  - Projects
+    - [[file:IST.org][IST.org]]
+      - job in general
+    - [[file:tagstore.org][tagstore.org]]
+      - my PhD project (students, content, ...)
+    - [[file:phd.org][phd.org]]
+      - the PhD document, final exam, organization
+    - [[file:postdoc.org][postdoc.org]]
+      - organizing and hopefully doing a Post-Doc abroad
+  - [[file:references.org][references.org]]
+    - books, papers, ...
+    - links to PDF, notes, summaries, BibTeX, ...
+    - [[https://github.com/novoid/extract_pdf_annotations_to_orgmode][extract_pdf_annotations_to_orgmode on github]]
+  - [[file:misc.org][misc.org]]
+    - mostly private projects, events, ...
+    - everything which does not fit into other Org-mode files
+  - [[file:contacts.org][contacts.org]]
+    - contact management
+  - [[file:hardware.org][hardware.org]]
+    - stuff I own
+    - stuff I want to own (errands, wishlist)
+    - borrowed stuff
+    - coupons with their expiration date
+    - inventory
+      - prices
+      - warranty cases
+      - manuals
+      - everything which happened to stuff I own
+  - [[file:foodandbeverages.org][foodandbeverages.org]]
+    - recipes
+    - cocktails
+  - [[file:movies.org][movies.org]]
+    - movies I saw or want to see
+  - [[file:notes.org][notes.org]]
+    - more or less information I migrated from my before-Org-mode-area
+    - PalmOS/JPilot
+    - should be moved to other Org-mode files
+      - yeah, this will be an open TODO forever :-)
+
+- Main headings of project-Org + misc
+  - shorts
+    - independent TODOs
+  - projects
+    - projects that are divided into several TODOs
+  - ideas
+    - collect things for future reference
+  - events
+    - one-time events and recurring events
+
+- Memacs
+  - example [2008-09-15]
+  - [[https://github.com/novoid/Memacs][Memacs on github]]
+
+** Org-mode Basics
+
+- [[file:~/institutions/tugraz/schulungen_voit/org-mode/kursmaterial/featureshow/org-mode-teaser.org][org-mode-teaser.org]] (local copy)
+
+** FIXXME: further items
+
+
+* Local Variables                                                  :noexport:
+# Local Variables:
+# eval: (org-expiry-deinsinuate)
+# mode: auto-fill
+# mode: flyspell
+# eval: (ispell-change-dictionary "en_US")
+# End:

@@ -1,0 +1,9 @@
+* Org-mode Workshop
+
+In November 2012, I was lucky enough to be able to conduct a workshop
+about [[http://orgmode.org][Emacs Org-mode]].
+
+This repository contains all relevant material I collected and created
+for this workshop.
+
+Karl

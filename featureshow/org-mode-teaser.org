@@ -89,15 +89,24 @@ Find this document on https://github.com/novoid/org-mode-workshop
 
 - headlines
 - levels
-- visibility cycling   ~TAB~
+- *visibility cycling*   ~TAB~
+  - Global               ~S-TAB~
 - motion
-  - next heading       ~C-c C-n~
-  - previous heading   ~C-c C-p~
-- new heading          ~C-RET~
-- modifying levels
-  - move up/down       ~M-UP/DOWN~
-  - promote            ~M-LEFT~
-  - demote             ~M-RIGHT~
+  - *next heading*       ~C-c C-n~ 
+  - *previous heading*   ~C-c C-p~
+  - one level up         ~C-c C-u~
+  - jump (goto)          ~C-c C-j~
+- create basic elements
+  - *new heading* below  ~C-RET~
+- move elements
+  - *move up/down*       ~M-UP/DOWN~
+  - *promote*            ~M-LEFT~
+  - *demote*             ~M-RIGHT~
+  - move with subitems   ~M-S-LEFT/RIGHT/UP/DOWN~
+- *toggle/modify* things ~C-c C-c~
+  - checkbox: activate/deactivate, heading: tags, tables:
+    re-calculate, jump footnote and back, update tables, update
+    TODO-count, ...
 
 *** Creating
 
@@ -130,19 +139,19 @@ This is a quite boring text just to show some body content.
 **** OK, now this is getting boring :-)
 
 
-
 *** encryption
 
 - whole Org-mode files
 - selective headlines using :crypt:
 
-** syntax [[http://orgmode.org/org.html#Emphasis-and-monospace][(docu)]]
+** text formatting syntax [[http://orgmode.org/org.html#Emphasis-and-monospace][(docu)]]
 
 - *bold*
 - /italic/
 - _underline_
 - +strike through+
 - =code=
+- http://orgmode.org
 
 : small example
 
@@ -160,8 +169,9 @@ foo bar
 
 ** lists [[http://orgmode.org/org.html#Plain-lists][(docu)]]
 
-- new item    ~M-RET~
-- move item   ~M-LEFT/RIGHT/UP/DOWN~
+- *new list item*      ~M-RET~
+- move item            ~M-LEFT/RIGHT/UP/DOWN~
+- create checkbox      ~M-S-RET~
 
 *** examples
 
@@ -209,6 +219,16 @@ check lists:
 
 ***** TODO put stuff back in
 
+** drawers, properties, columns ([[http://orgmode.org/org.html#Properties-and-Columns][docu]])
+
+- FIXXME
+- timed LOGBOOK entry              ~C-c C-z~
+- define ID in PROPERTIES          ~:ID: label~
+
+- task dependencies with org-depend ([[http://orgmode.org/worg/org-contrib/org-depend.html][docu]])
+  - define blocking task             ~:BLOCKER: otherID~
+  - define trigger for setting NEXT  ~:TRIGGER: chain-silbings(NEXT)~
+
 ** links [[http://orgmode.org/org.html#Hyperlinks][(docu)]]
 
 : [[link]]
@@ -223,6 +243,15 @@ check lists:
 
 - inserting link   ~C-c C-l~
 
+- footnotes
+  - plain          [fn::great content here]
+  - with own label [fn:mylabel:great content here]
+  - reference      [fn:myotherlabel] [fn:2]
+  - jump between footnote and reference  ~C-c C-c~
+
+[fn:myotherlabel] This is a footnote from reference above.
+[fn:2] This is a footnote with a simple number as label.
+
 *** heading with PROPERTIES drawer containing ID
 :PROPERTIES:
 :ID: myexampleid
@@ -232,17 +261,57 @@ foo bar
  
 ** tags [[http://orgmode.org/org.html#Tags][(docu)]]
 
+- FIXXME
 - manage tags   ~C-c C-c~
 
 *** example                                                           :tag:
+** states
+
+- ~rotate TODO state~         ~C-c C-t~
+- sparse tree with TODOs      ~C-c / t~
+- global TODO list in agenda  ~C-c a t~
+- *new TODO heading*          ~C-S-RET~
+
+- toggle ORDERED flag for father ~C-c C-x o~
+- set priority                ~C-c ,~
+  - priority up/down          ~S-UP/DOWN~
+
+- per-file keywords     ~#+TODO: TODO(t) FEEDBACK(f) | DONE(d!) CANCELED(c!@)~
+  - timestamp  ~!~
+  - add note   ~@~
+
+- TODO-heading stat cookies   ~[/]~ or ~[%]~ (will be ~[2/5]~ or ~[42%]~)
+
+*** making dependencies explicit
+
+- see only tasks that are *not* depending on other *open* tasks
+  - see only things that can be done now
+- http://orgmode.org/worg/org-contrib/org-depend.html
+- to define workflows (see demo below)
+
+** sparse trees
+
+- Filtering
+  - Filter in sparse trees             ~C-c /~
+  - Filter using Regular Expressions   ~C-c / r~
+- Moving in results
+  - goto next match                    ~M-g n~
+  - goto previous match                ~M-g o~
+- [[http://orgmode.org/org.html#Property-searches][docu: property search]]
 
 ** tables simple [[http://orgmode.org/org.html#Tables][(docu)]] 
 
-- [ ] DEMO: create table
+- *update tables*        ~C-c C-c~
+- *move next field*      ~TAB~
+- next row               ~RET~
+- *moving rows/columns*  ~M-LEFT/RIGHT/UP/DOWN~
+- insert vertical bar below    ~C-c -~
+- sum current column     ~C-c +~
+- export table           ~org-table-export~
+- table formula          ~#+TBLFM: $3 = $1 + $2~
+- incremental numbers    ~#+TBLFM: $1 = -1 + 1 :: @2$1 = 1~
 
-- creating rows/columns
-  - headers
-- moving rows/columns    ~M-LEFT/RIGHT/UP/DOWN~
+- [ ] DEMO: create table
 
 ** tables complex ([[http://orgmode.org/org.html#The-spreadsheet][docu]], [[http://orgmode.org/worg/org-tutorials/org-spreadsheet-intro.html][tutorial]])
 
@@ -269,14 +338,6 @@ foo bar
 - edit formulas           ~C-c '~
 - [[http://orgmode.org/worg/org-tutorials/org-spreadsheet-intro.html#sec-7][debugging formulas]]
 
-** states
-*** making dependencies explicit
-
-- see only tasks that are *not* depending on other *open* tasks
-  - see only things that can be done now
-- http://orgmode.org/worg/org-contrib/org-depend.html
-- to define workflows (see demo below)
-
 ** capture, refile, archive
 
 - capture      ~C-c c~
@@ -301,6 +362,7 @@ foo bar
 
 - python "Hello World"
 - switch to language specific buffer  ~C-c '~
+- easy templates ([[http://orgmode.org/org.html#Easy-Templates][docu]])               ~<s + TAB~
 
 #+BEGIN_SRC python
   def foo(argument):
