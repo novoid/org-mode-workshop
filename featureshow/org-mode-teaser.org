@@ -12,8 +12,8 @@
 #+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
 #+EXPORT_SELECT_TAGS: export
 #+EXPORT_EXCLUDE_TAGS: noexport
-#+LINK_UP:   
-#+LINK_HOME: 
+#+LINK_UP:
+#+LINK_HOME:
 #+XSLT:
 
 #+STARTUP: hidestars
@@ -85,25 +85,66 @@ http://orgmode.org/org.html#Setting-tags
 
 Find this document on https://github.com/novoid/org-mode-workshop
 
+** activate Org-mode
+
+[[http://orgmode.org/worg/org-tutorials/orgtutorial_dto.html#sec-1-2][Activation of Org-mode (external Tutorial)]]:
+#+BEGIN_SRC emacs-lisp
+(require 'org-install)
+(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
+(setq org-log-done t)
+#+END_SRC
+
+- Org-mode *minor mode* (structure editing and lists) ~orgstruct-mode~ ([[http://orgmode.org/org.html#Orgstruct-mode][docu]])
+
+** text formatting syntax [[http://orgmode.org/org.html#Emphasis-and-monospace][(docu)]]
+
+- *bold*
+- /italic/
+- _underline_
+- +strike through+
+- =code=
+- http://orgmode.org
+
+: small example
+
+#+COMMENT: this will never be exported
+
+#+BEGIN_COMMENT
+multi
+line
+comment
+#+END_COMMENT
+
+*** COMMENT: no exported either
+
+foo bar
+
 ** outlining ([[http://orgmode.org/org.html#Document-Structure][docu]])
 
-- headlines
+- headlines start with asterisks
 - levels
-- *visibility cycling*   ~TAB~
-  - Global               ~S-TAB~
+- visibility
+  - ~TAB~      *visibility cycling*
+  - ~S-TAB~    change buffer visibility
+  - ~C-c C-r~  *reveal context*
+  - per-file visibility ~#+STARTUP: overview~ and so on: ([[http://orgmode.org/org.html#Visibility-cycling][docu]])
 - motion
-  - *next heading*       ~C-c C-n~ 
-  - *previous heading*   ~C-c C-p~
-  - one level up         ~C-c C-u~
-  - jump (goto)          ~C-c C-j~
+  - ~C-c C-n~   *next heading*
+  - ~C-c C-p~   *previous heading*
+  - ~C-c C-u~   one level up
+  - ~C-c C-j~   jump (goto)
+  - ~C-c C-f~   forward same level
+  - ~C-c C-b~   backward same level
 - create basic elements
-  - *new heading* below  ~C-RET~
+  - ~C-RET~     *new heading* below
 - move elements
-  - *move up/down*       ~M-UP/DOWN~
-  - *promote*            ~M-LEFT~
-  - *demote*             ~M-RIGHT~
-  - move with subitems   ~M-S-LEFT/RIGHT/UP/DOWN~
-- *toggle/modify* things ~C-c C-c~
+  - ~M-UP/DOWN~ *move up/down*
+  - ~M-LEFT~    *promote*
+  - ~M-RIGHT~   *demote*
+  - ~M-S-LEFT/RIGHT/UP/DOWN~ move with subitems
+- ~C-c C-c~  *toggle/modify* things
   - checkbox: activate/deactivate, heading: tags, tables:
     re-calculate, jump footnote and back, update tables, update
     TODO-count, ...
@@ -144,34 +185,21 @@ This is a quite boring text just to show some body content.
 - whole Org-mode files
 - selective headlines using :crypt:
 
-** text formatting syntax [[http://orgmode.org/org.html#Emphasis-and-monospace][(docu)]]
+** sparse trees ([[http://orgmode.org/org.html#Sparse-trees][docu]])
 
-- *bold*
-- /italic/
-- _underline_
-- +strike through+
-- =code=
-- http://orgmode.org
-
-: small example
-
-#+COMMENT: this will never be exported
-
-#+BEGIN_COMMENT
-multi
-line
-comment
-#+END_COMMENT
-
-*** COMMENT: no exported either
-
-foo bar
+- Filtering
+  - ~C-c /~    Filter in *sparse trees*
+  - ~C-c / r~  Filter using *Regular Expressions*
+- Moving in results
+  - ~M-g n~    goto next match
+  - ~M-g o~    goto previous match
+- [[http://orgmode.org/org.html#Property-searches][docu: property search]]
 
 ** lists [[http://orgmode.org/org.html#Plain-lists][(docu)]]
 
-- *new list item*      ~M-RET~
-- move item            ~M-LEFT/RIGHT/UP/DOWN~
-- create checkbox      ~M-S-RET~
+- ~M-RET~      *new list item*
+- ~M-S-RET~    create checkbox
+- ~M-LEFT/RIGHT/UP/DOWN~  move item
 
 *** examples
 
@@ -192,6 +220,9 @@ check lists:
 - [ ] DEMO: create simple lists and move items around
 
 *** Checklists
+
+- ~M-S-RET~  new item with checkbox
+- ~C-c C-*~  checkboxes become TODOs
 
 - Clean out garage
   1. [ ] get stuff out
@@ -221,18 +252,33 @@ check lists:
 
 ** drawers, properties, columns ([[http://orgmode.org/org.html#Properties-and-Columns][docu]])
 
-- FIXXME
-- timed LOGBOOK entry              ~C-c C-z~
-- define ID in PROPERTIES          ~:ID: label~
+- meta-data on headings
+- standard drawers :PROPERTIES: and :LOGBOOK:
+- ends with :END:
 
-- task dependencies with org-depend ([[http://orgmode.org/worg/org-contrib/org-depend.html][docu]])
-  - define blocking task             ~:BLOCKER: otherID~
-  - define trigger for setting NEXT  ~:TRIGGER: chain-silbings(NEXT)~
+- FIXXME
+
+- ~C-c C-z~      timed LOGBOOK entry
+- ~:ID: label~   define ID in PROPERTIES
+
+** blocks ([[http://orgmode.org/org.html#Blocks][docu]])
+
+- encapsulating content with begin...end structure
+- ~<s + TAB~   easy templates ([[http://orgmode.org/org.html#Easy-Templates][docu]])
+
+#+BEGIN_EXAMPLE
+Some example from a text file.
+#+END_EXAMPLE
+
+- more of it in the Babel section later on
 
 ** links [[http://orgmode.org/org.html#Hyperlinks][(docu)]]
 
 : [[link]]
 : [[link][description]]
+
+target:
+: # <<link>>
 
 - id:myexampleid
 - [[file:~/.zshrc.local]]
@@ -241,16 +287,30 @@ check lists:
 - custom links: [[contact:John%20Smith][contact:John Smith]]
   - [[http://orgmode.org/org.html#Link-abbreviations][docu: link abbrevations]]
 
-- inserting link   ~C-c C-l~
+- ~C-c l~    store link (also in many other buffer types: [[http://orgmode.org/org.html#Handling-links][docu]])
+- ~C-c C-l~  *inserting link* (or edit existing link)
+- ~C-u C-c C-l~  file link (shortcut)
+- ~C-c C-o~  open link
 
-- footnotes
+- "radio targets" are auto-links created by target like ~<<<target name>>>~
+  - all occurrences of "target name" will be links
+
+- ~C-c C-x C-v~  toggle show inline images
+
+- ~C-c %~   push position into ring
+- ~C-c &~   goto last saved position in ring
+
+- footnotes ([[http://orgmode.org/org.html#Footnotes][docu]])
   - plain          [fn::great content here]
   - with own label [fn:mylabel:great content here]
   - reference      [fn:myotherlabel] [fn:2]
-  - jump between footnote and reference  ~C-c C-c~
+  - ~C-c C-c~      jump between footnote and reference
+  - ~C-c C-x f~    footnote action command (see [[http://orgmode.org/org.html#Footnotes][docu]])
 
 [fn:myotherlabel] This is a footnote from reference above.
 [fn:2] This is a footnote with a simple number as label.
+
+- *many external link types* see [[http://orgmode.org/org.html#External-links][docu]]
 
 *** heading with PROPERTIES drawer containing ID
 :PROPERTIES:
@@ -258,64 +318,134 @@ check lists:
 :END:
 
 foo bar
- 
-** tags [[http://orgmode.org/org.html#Tags][(docu)]]
+** states; TODO items ([[http://orgmode.org/org.html#TODO-Items][docu]])
 
-- FIXXME
-- manage tags   ~C-c C-c~
+- ~C-c C-t~   *rotate TODO state*
+- ~C-c / t~   sparse tree with TODOs
+- ~C-c a t~   global TODO list in agenda
+- ~C-S-RET~   *new TODO heading*
 
-*** example                                                           :tag:
-** states
-
-- ~rotate TODO state~         ~C-c C-t~
-- sparse tree with TODOs      ~C-c / t~
-- global TODO list in agenda  ~C-c a t~
-- *new TODO heading*          ~C-S-RET~
-
-- toggle ORDERED flag for father ~C-c C-x o~
-- set priority                ~C-c ,~
-  - priority up/down          ~S-UP/DOWN~
+- ~C-c C-x o~   toggle ORDERED flag for father
+- ~C-c ,~       set priority
+- ~S-UP/DOWN~   priority up/down
 
 - per-file keywords     ~#+TODO: TODO(t) FEEDBACK(f) | DONE(d!) CANCELED(c!@)~
-  - timestamp  ~!~
-  - add note   ~@~
-
-- TODO-heading stat cookies   ~[/]~ or ~[%]~ (will be ~[2/5]~ or ~[42%]~)
+  - ~!~   timestamp
+  - ~@~   add note
 
 *** making dependencies explicit
+
+- simple, ordered method with PROPERTIES drawer:
+: :ORDERED: t
+- ~C-c C-x o~  toggle ORDERED property
 
 - see only tasks that are *not* depending on other *open* tasks
   - see only things that can be done now
 - http://orgmode.org/worg/org-contrib/org-depend.html
 - to define workflows (see demo below)
 
-** sparse trees
+- task dependencies with org-depend ([[http://orgmode.org/worg/org-contrib/org-depend.html][docu]])
+  - ~:BLOCKER: otherID~               define blocking task
+  - ~:TRIGGER: chain-silbings(NEXT)~  define trigger for setting NEXT
 
-- Filtering
-  - Filter in sparse trees             ~C-c /~
-  - Filter using Regular Expressions   ~C-c / r~
-- Moving in results
-  - goto next match                    ~M-g n~
-  - goto previous match                ~M-g o~
-- [[http://orgmode.org/org.html#Property-searches][docu: property search]]
+*** logging state changes ([[http://orgmode.org/org.html#Tracking-TODO-state-changes][docu]])
 
-** tables simple [[http://orgmode.org/org.html#Tables][(docu)]] 
+- ~!~ in todo state definition
+- ~org-log-into-drawer~ for setting default behavior
 
-- *update tables*        ~C-c C-c~
-- *move next field*      ~TAB~
-- next row               ~RET~
-- *moving rows/columns*  ~M-LEFT/RIGHT/UP/DOWN~
-- insert vertical bar below    ~C-c -~
-- sum current column     ~C-c +~
-- export table           ~org-table-export~
-- table formula          ~#+TBLFM: $3 = $1 + $2~
-- incremental numbers    ~#+TBLFM: $1 = -1 + 1 :: @2$1 = 1~
+*** habits ([[http://orgmode.org/org.html#Tracking-your-habits][docu]])
+
+- enable habits module by customizing the variable ~org-modules~
+- TODO items with property STYLE is set to the value ~habit~:
+: :STYLE: habit
+
+#+BEGIN_EXAMPLE
+     ** TODO Shave
+        SCHEDULED: <2009-10-17 Sat .+2d/4d>
+        - State "DONE"       from "TODO"       [2009-10-15 Thu]
+        - State "DONE"       from "TODO"       [2009-10-12 Mon]
+        - State "DONE"       from "TODO"       [2009-10-10 Sat]
+        - State "DONE"       from "TODO"       [2009-10-04 Sun]
+        - State "DONE"       from "TODO"       [2009-10-02 Fri]
+        - State "DONE"       from "TODO"       [2009-09-29 Tue]
+        - State "DONE"       from "TODO"       [2009-09-25 Fri]
+        - State "DONE"       from "TODO"       [2009-09-19 Sat]
+        - State "DONE"       from "TODO"       [2009-09-16 Wed]
+        - State "DONE"       from "TODO"       [2009-09-12 Sat]
+        :PROPERTIES:
+        :STYLE:    habit
+        :LAST_REPEAT: [2009-10-19 Mon 00:36]
+        :END:
+#+END_EXAMPLE
+
+*** priorities ([[http://orgmode.org/org.html#Priorities][docu]])
+
+- ~C-c ,~     set priorities
+- ~S-UP/DOWN~ *change priority*
+
+- [A], [B], [C]
+- no priority is ordered like [B]
+
+**** TODO [#A] example
+
+*** breaking down in subtasks ([[http://orgmode.org/org.html#Breaking-down-tasks][docu]])
+
+- for TODO-headings: stat cookies   ~[/]~ or ~[%]~ (will be ~[1/3]~ or ~[33%]~)
+- also possible:
+  - for checkboxes
+  - recursive
+  - mark entry to DONE if all children are DONE
+
+**** TODO example [1/3] [33%]
+***** DONE subtask 1
+***** TODO subtask 2
+***** TODO subtask 3
+** tags [[http://orgmode.org/org.html#Tags][(docu)]]
+
+- inherited tags
+- per-file definition of tags:
+: #+TAGS: { @work(w) @home(h) } online(o) kids(k)
+
+- per-file tags for all entries:
+: #+FILETAGS: :this:that:foo:
+
+- ~C-c C-q~   *set tags*
+- ~C-c C-c~   set tags if cursor is on a heading
+
+- ~C-c / m~   *search for tags* in sparse tree
+- ~C-c a m~   global list of tag matching
+- ~C-c a M~   same but check only TODO items
+
+- syntax ([[http://orgmode.org/org.html#Matching-tags-and-properties][docu]])
+  - ~+boss+urgent~  AND
+  - ~boss|urgent~   OR
+  - ~+boss+urgent-project~   combination of tags
+  - ~work+TODO="WAITING"|home+TODO="WAITING"~  Waiting tasks both at work and at home
+
+*** example                                                           :tag:
+
+** tables simple [[http://orgmode.org/org.html#Tables][(docu)]]
+
+- ~C-c C-c~  *update table*
+- ~TAB~      *move next field*
+- ~RET~      next row
+- ~M-LEFT/RIGHT/UP/DOWN~   *moving rows/columns*
+- ~C-c -~   insert vertical bar below
 
 - [ ] DEMO: create table
 
 ** tables complex ([[http://orgmode.org/org.html#The-spreadsheet][docu]], [[http://orgmode.org/worg/org-tutorials/org-spreadsheet-intro.html][tutorial]])
 
-- import data from CSV file: ~org-table-import~
+- ~C-c +~   sum current column (or marked rectangle)
+- ~org-table-export~                  export table
+- ~#+TBLFM: $3 = $1 + $2~             table formula
+- ~#+TBLFM: $1 = -1 + 1 :: @2$1 = 1~  incremental numbers
+
+- ~C-c |~  move region into table (see [[http://orgmode.org/org.html#Built_002din-table-editor][docu]])
+  - TABs, CSV, ...
+
+- ~org-table-import~  import data from CSV file
+- ~org-table-export~  export data to CSV file
 
 #+TBLNAME: mydemo-USD-EUR-rate
 | *US-Dollar* |      *EUR* |
@@ -333,36 +463,63 @@ foo bar
 |            |                        |       | 91.36 |
 #+TBLFM: @>$4=vsum(@I$4..@II$4);%.2f::@3$4=@3$3*remote(mydemo-USD-EUR-rate,@2$2);%.2f::@4$4=@4$3*remote(mydemo-USD-EUR-rate,@2$2);%.2f::@5$4=@5$3*remote(mydemo-USD-EUR-rate,@2$2);%.2f::@6$4=@6$3*remote(mydemo-USD-EUR-rate,@2$2);%.2f
 
-- update values           ~C-c C-c~
-- visualize rows/columns  ~C-c }~
-- edit formulas           ~C-c '~
+- ~C-c C-c~   update values
+- ~C-c }~     visualize rows/columns
+- ~C-c '~     edit formulas
 - [[http://orgmode.org/worg/org-tutorials/org-spreadsheet-intro.html#sec-7][debugging formulas]]
+
+- many, many, many more table features in the documentation!
 
 ** capture, refile, archive
 
-- capture      ~C-c c~
-- refile       ~C-c C-w~
-- archive      ~C-c C-x C-a~
+- ~C-c c~          *capture*
+- ~C-c C-w~        *refile*
+- ~C-c C-x C-a~    *archive*
+- ~C-u C-u C-c c~  *goto last capture*
+
+- ~#+ARCHIVE: %s_done::~   per-file archive
+- ~C-c C-x a~       toggle ARCHIVE tag
+- ~C-u C-c C-x a~   check direct children for archiving
 
 ** dates & time
 
-- insert active <2012-04-23 Mon>     ~C-c .~
-- insert inactive [2012-04-23 Mon]   ~C-c !~
-- interactively change               ~S-RIGHT/LEFT/UP/DOWN~
+- ~C-c .~    *insert active* <2012-04-23 Mon>
+- ~C-c !~    insert inactive [2012-04-23 Mon]
+- ~S-RIGHT/LEFT/UP/DOWN~  interactively change
+- ~C-c C-d~  *insert DEADLINE*
+- ~C-c C-s~  *insert SCHEDULED*
+
+- ~C-u C-c C-d~   removing DEADLINE
+- ~C-u C-c C-s~   removing SCHEDULED
+- ~C-c / d~       sparse tree with deadlines
+
+- ~DEADLINE <YYYY-MM-DD DoW +2d~   defining repeated events/tasks
+- ~.+2w~     repetition interval starting with last DONE timestamp
+- ~++3m~     never show multiple times even if not DONE
+- ~.+2d/4d~  show up on agenda not earlier as 2 days until 4 days
+
+- ~C-c C-x c~  clone (recurring) event with time-shift  (~org-clone-subtree-with-time-shift~)
+  - good idea: create recurring event and clone it with time-shift
+  - this way, canceling single events or moving single events is
+    possible
+
+- ~13:00-15:15~ or ~13:00+2:15~  time duration
+- ~<2012-11-15 Thu>-<2012-11-17 Sat>~ date duration
 
 ** agenda
 
-- invoke Agenda view      ~C-c a a~
-- jump to date ~j~
+- ~C-c a a~  invoke Agenda view
+- ~j~        jump to date
 - view for day ~v d~, week ~v w~, or month ~v m~
 - moving forward ~f~ and backward ~b~
 - filtering by tags, strings, ...
-  
+- FIXXME
+
 ** source code
 
 - python "Hello World"
-- switch to language specific buffer  ~C-c '~
-- easy templates ([[http://orgmode.org/org.html#Easy-Templates][docu]])               ~<s + TAB~
+- ~C-c '~      *edit in native mode*
+- ~<s + TAB~   *easy templates* ([[http://orgmode.org/org.html#Easy-Templates][docu]])
 
 #+BEGIN_SRC python
   def foo(argument):
@@ -392,7 +549,7 @@ require 'date'
 
 **** python
 
-#+BEGIN_SRC python 
+#+BEGIN_SRC python
 return 42 + 7
 #+END_SRC
 
@@ -463,7 +620,7 @@ Using result set "directories" from above as "dirs" in R below:
   - great [[http://orgmode.org/org-mode-support.html][community]], active [[http://lists.gnu.org/mailman/listinfo/emacs-orgmode][mailinglist]] ([[http://news.gmane.org/gmane.emacs.orgmode][gmane]])
   - documentation: http://orgmode.org/org.html
   - [[http://orgmode.org/worg/org-people.html#sec-22][My userpage on Worg]]
-- even [[http://orgmode.org/org-mode-documentation.html][more documentation]] 
+- even [[http://orgmode.org/org-mode-documentation.html][more documentation]]
 
 ** Other Demo Sources
 
@@ -505,7 +662,7 @@ Using result set "directories" from above as "dirs" in R below:
 
 ** Memacs
 
-- What happened on <2008-09-15 Mon>?
+- What happened on [2008-09-15 Mon]?
 - Documentation and Source: https://github.com/novoid/Memacs
 
 *** existing modules
