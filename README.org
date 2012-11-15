@@ -1,9 +1,14 @@
 * Org-mode Workshop
 
 In November 2012, I was lucky enough to be able to conduct a workshop
-about [[http://orgmode.org][Emacs Org-mode]].
+about [[http://orgmode.org][Emacs Org-mode]] at [[http://www.TUGraz.at][Graz University of Technology]], Austria.
 
 This repository contains all relevant material I collected and created
-for this workshop.
+for this and possible future workshops on this great topic.
+
+I would like to thank all contributors to Org-mode for this wonderful
+"virtual box of Lego-bricks": Org-mode lets me build a huge variety of
+great solutions, so that I've got the feeling, that I only start to
+see the beginning!
 
 Karl
