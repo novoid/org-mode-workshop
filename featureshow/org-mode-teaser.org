@@ -78,7 +78,7 @@ http://orgmode.org/org.html#Setting-tags
 ** Meta-data
 
 - define as much as you need
-- you've got all possibilties
+- you've got all possibilities
 
 
 * A Subset(!) of Org-mode Basics
@@ -105,6 +105,7 @@ Find this document on https://github.com/novoid/org-mode-workshop
 - _underline_
 - +strike through+
 - =code=
+- ~commands~
 - http://orgmode.org
 
 : small example
@@ -128,7 +129,7 @@ foo bar
 - visibility
   - ~TAB~      *visibility cycling*
   - ~S-TAB~    change buffer visibility
-  - ~C-c C-r~  *reveal context*
+  - ~C-c C-r~  *reveal context* (not bound?)
   - per-file visibility ~#+STARTUP: overview~ and so on: ([[http://orgmode.org/org.html#Visibility-cycling][docu]])
 - motion
   - ~C-c C-n~   *next heading*
@@ -140,10 +141,10 @@ foo bar
 - create basic elements
   - ~C-RET~     *new heading* below
 - move elements
-  - ~M-UP/DOWN~ *move up/down*
+  - ~M-UP/DOWN~ *move up/down* with subitems
   - ~M-LEFT~    *promote*
   - ~M-RIGHT~   *demote*
-  - ~M-S-LEFT/RIGHT/UP/DOWN~ move with subitems
+  - ~M-S-LEFT/RIGHT~  promote/demote with subitems
 - ~C-c C-c~  *toggle/modify* things
   - checkbox: activate/deactivate, heading: tags, tables:
     re-calculate, jump footnote and back, update tables, update
@@ -184,6 +185,7 @@ This is a quite boring text just to show some body content.
 
 - whole Org-mode files
 - selective headlines using :crypt:
+- ~org-decrypt-entry~
 
 ** sparse trees ([[http://orgmode.org/org.html#Sparse-trees][docu]])
 
@@ -226,7 +228,7 @@ check lists:
 
 - Clean out garage
   1. [ ] get stuff out
-     - be careful with that axe, Eugene
+     - [ ] be careful with that axe, Eugene
   2. [ ] get rid of old stuff
      - using eBay?
      - try to use rubbish as birthday presents for family
@@ -325,10 +327,6 @@ foo bar
 - ~C-c a t~   global TODO list in agenda
 - ~C-S-RET~   *new TODO heading*
 
-- ~C-c C-x o~   toggle ORDERED flag for father
-- ~C-c ,~       set priority
-- ~S-UP/DOWN~   priority up/down
-
 - per-file keywords     ~#+TODO: TODO(t) FEEDBACK(f) | DONE(d!) CANCELED(c!@)~
   - ~!~   timestamp
   - ~@~   add note
@@ -346,8 +344,18 @@ foo bar
 
 - task dependencies with org-depend ([[http://orgmode.org/worg/org-contrib/org-depend.html][docu]])
   - ~:BLOCKER: otherID~               define blocking task
-  - ~:TRIGGER: chain-silbings(NEXT)~  define trigger for setting NEXT
+  - ~:TRIGGER: chain-siblings(NEXT)~  define trigger for setting NEXT
 
+**** example with chain siblings
+
+***** NEXT buy bike
+:PROPERTIES:
+:TRIGGER: chain-siblings(NEXT)
+:END:
+
+***** take tour
+
+***** goto hospital
 *** logging state changes ([[http://orgmode.org/org.html#Tracking-TODO-state-changes][docu]])
 
 - ~!~ in todo state definition

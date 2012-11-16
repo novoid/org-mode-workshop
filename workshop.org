@@ -151,6 +151,11 @@ http://orgmode.org/org.html#Setting-tags
   - events
     - one-time events and recurring events
 
+- 'DND' in heading puts Android in silent mode
+  - [[http://orgmode.org/worg/org-tutorials/org-google-sync.html][sync Agenda with Google Calendar]]
+  - [[http://tasker.dinglisch.net/][Tasker]]-rule
+    - if calendar event contains 'DND' -> silent mode
+
 - Memacs
   - example [2008-09-15]
   - [[https://github.com/novoid/Memacs][Memacs on github]]
