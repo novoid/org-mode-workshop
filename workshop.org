@@ -93,6 +93,8 @@ http://orgmode.org/org.html#Setting-tags
 
 - My Agenda
 
+- [[http://orgmode.org/worg/org-tutorials/org-google-sync.html][Sync with Google Calendar]]
+
 - Capture stuff
 
 - Reproducible Research
