@@ -83,7 +83,20 @@ http://orgmode.org/org.html#Setting-tags
 
 * A Subset(!) of Org-mode Basics
 
-Find this document on https://github.com/novoid/org-mode-workshop
+- Find this document on https://github.com/novoid/org-mode-workshop
+
+#+TBLNAME: key-legend
+| *key* | *description*       |
+|-------+---------------------|
+| M     | Meta (often: Alt)   |
+| C     | Ctrl                |
+| S     | Shift               |
+| TAB   | Tabulator           |
+| RET   | Return, Enter, CRLF |
+| UP    | arrow: up           |
+| DOWN  | arrow: down         |
+| LEFT  | arrow: left         |
+| RIGHT | arrow: right        |
 
 ** activate Org-mode
 
@@ -197,11 +210,14 @@ This is a quite boring text just to show some body content.
   - ~M-g o~    goto previous match
 - [[http://orgmode.org/org.html#Property-searches][docu: property search]]
 
+- ~C-c a L~    time sorted view of buffer
+
 ** lists [[http://orgmode.org/org.html#Plain-lists][(docu)]]
 
 - ~M-RET~      *new list item*
 - ~M-S-RET~    create checkbox
 - ~M-LEFT/RIGHT/UP/DOWN~  move item
+- ~C-c -~      cycle item type OR turn into list item
 
 *** examples
 
@@ -438,19 +454,23 @@ foo bar
 - ~TAB~      *move next field*
 - ~RET~      next row
 - ~M-LEFT/RIGHT/UP/DOWN~   *moving rows/columns*
-- ~C-c -~   insert vertical bar below
+- ~C-c -~    insert vertical bar below
+- ~C-c |~    convert region into table
+- ~C-c ^~    sort lines (in region)
 
 - [ ] DEMO: create table
 
 ** tables complex ([[http://orgmode.org/org.html#The-spreadsheet][docu]], [[http://orgmode.org/worg/org-tutorials/org-spreadsheet-intro.html][tutorial]])
 
-- ~C-c +~   sum current column (or marked rectangle)
-- ~org-table-export~                  export table
-- ~#+TBLFM: $3 = $1 + $2~             table formula
-- ~#+TBLFM: $1 = -1 + 1 :: @2$1 = 1~  incremental numbers
-
 - ~C-c |~  move region into table (see [[http://orgmode.org/org.html#Built_002din-table-editor][docu]])
   - TABs, CSV, ...
+- ~C-c +~   sum current column (or marked rectangle)
+
+- ~=$1+$2~            value = sum of 1st and 2nd column
+- ~:=vsum(@I..@II)~   field = sum between 1st and 2nd hline
+
+- ~#+TBLFM: $3 = $1 + $2~             table formula
+- ~#+TBLFM: $1 = -1 + 1 :: @2$1 = 1~  incremental numbers
 
 - ~org-table-import~  import data from CSV file
 - ~org-table-export~  export data to CSV file
@@ -473,7 +493,7 @@ foo bar
 
 - ~C-c C-c~   update values
 - ~C-c }~     visualize rows/columns
-- ~C-c '~     edit formulas
+- ~C-c '~     edit formula in separate buffer
 - [[http://orgmode.org/worg/org-tutorials/org-spreadsheet-intro.html#sec-7][debugging formulas]]
 
 - many, many, many more table features in the documentation!
@@ -598,6 +618,16 @@ Using result set "directories" from above as "dirs" in R below:
 - "advanced-beta" of [[http://wiki.github.com/matburt/mobileorg-android/][Android app]]
   - ssh, scp, WEBDAV, gpg encryption, ...
 
+#+BEGIN_SRC emacs-lisp
+;;; http://orgmode.org/org.html#MobileOrg
+;;; directory where to store MobileOrg-files
+(setq org-mobile-directory "~/share/all/org-mode/mobile-org/")
+(setq org-directory "~/share/all/org-mode")
+(setq org-mobile-inbox-for-pull "~/share/all/org-mode/inbox.org")
+(setq org-mobile-force-id-on-agenda-items nil)
+'(org-mobile-files (quote ("~/share/all/org-mode/contacts.org" "~/data/share/all/org-mode/hardware.org" )))
+#+END_SRC
+
 ** export formats ([[http://orgmode.org/org.html#Exporting][docu]])
 
 - ASCII/Latin-1/UTF-8 export
@@ -629,6 +659,7 @@ Using result set "directories" from above as "dirs" in R below:
   - documentation: http://orgmode.org/org.html
   - [[http://orgmode.org/worg/org-people.html#sec-22][My userpage on Worg]]
 - even [[http://orgmode.org/org-mode-documentation.html][more documentation]]
+- example with many preferences http://doc.norang.ca/org-mode.html
 
 ** Other Demo Sources
 
@@ -656,6 +687,23 @@ Using result set "directories" from above as "dirs" in R below:
 
 - sparse trees
 
+#+BEGIN_SRC emacs-lisp
+
+(setq org-contacts-files "~/share/all/org-mode/contacts.org")
+
+(setq org-link-abbrev-alist
+  '(
+	("contact" . "~/share/all/org-mode/contacts.org::/\*.*%s/")
+  ))
+
+;; ######################################################
+;; contact management with org-contacts
+;; http://julien.danjou.info/org-contacts.html
+(require 'org-contacts)
+(custom-set-variables '(org-contacts-files "~/share/all/org-mode/contacts.org"))
+
+#+END_SRC
+
 ** references
 
 - [[file:~/share/all/org-mode/references.org][My Reference-Management]]
@@ -664,8 +712,66 @@ Using result set "directories" from above as "dirs" in R below:
   - link to PDF
 - integrated annotated PDF files
 
+#+BEGIN_SRC emacs-lisp
+;; ######################################################
+;; http://tincman.wordpress.com/2011/01/04/research-paper-management-with-emacs-org-mode-and-reftex/
+;; org-mode and paper references
+
+(defadvice reftex-format-citation (before eval-citation-format)
+  (setq format (eval format)))
+
+(defun org-mode-reftex-setup ()
+  (load-library "reftex")
+  (and (buffer-file-name) (file-exists-p (buffer-file-name))
+       (progn
+	 ;enable auto-revert-mode to update reftex when bibtex file changes on disk
+	 (global-auto-revert-mode t)
+	 (reftex-parse-all)
+	 ;add a custom reftex cite format to insert links
+	 (reftex-set-cite-format
+	  '((?b . "[[bib:%l][%l.bib]]")
+	    (?r . "[[ref:%l][%l]]")
+	    (?p . "[[pdf:%l][%l.pdf]]")
+	    (?a . "[[notes:%l][%l-notes.pdf]]")
+	    (?s . "[[pdf:%l-self][%l-self.pdf]]")
+	    (?t . "%t")
+	    (?h . (concat "** %l - %t\n:PROPERTIES:\n:CREATED: "
+			  "<" (substring (format-time-string (org-time-stamp-format t t)) 1 -1) ">"
+			  "\n:ID: %l\n:END:\n[[bib:%l][%l.bib]]\n[[pdf:%l][%l.pdf]]\n\n*** Abstract\n\n#+BEGIN_QUOTE\n#+END_QUOTE\n\n"))
+	    (?n . (concat "*** PDF Annotations: [[notes:%l][%l-notes.pdf]]\n:PROPERTIES:\n:CREATED: "
+			  "<" (substring (format-time-string (org-time-stamp-format t t)) 1 -1) ">"
+			  "\n:ID: %l-notes\n:END:\n\n"
+			  "\#+begin_src sh :results output\n"
+			  "${HOME}/bin/vkextract_annotations_to_orgmode_snippet.sh %l\n"
+                          "#+end_src"))
+	    ))))
+  (define-key org-mode-map (kbd "C-c )") 'reftex-citation)
+  (define-key org-mode-map (kbd "C-c (") 'org-mode-reftex-search))
+
+;(add-hook 'org-mode-hook 'org-mode-reftex-setup)
+(add-hook 'org-mode-hook
+	   (lambda ()
+	     (if (member "CHECK_NEEDED" org-todo-keywords-1)
+		 (org-mode-reftex-setup))))
+
+(defun org-mode-reftex-search ()
+  ;;jump to the notes for the paper pointed to at from reftex search
+  (interactive)
+  (org-open-link-from-string (format "[[ref:%s]]" (reftex-citation t))))
+
+(setq org-link-abbrev-alist
+      '(
+	("bib" . "~/archive/library/%s.bib")
+	("ref" . "file:~/share/all/org-mode/references.org::/%s/")
+	("pdf" . "~/archive/library/%s.pdf")
+	("notes" . "~/archive/library/%s-notes.pdf")
+	))
+
+#+END_SRC
+
 ** workflows
 
+- [[https://github.com/capitaomorte/yasnippet][yasnippet]] as flexible template system
 - example: gdipruef at id:teaser-tests
 
 ** Memacs

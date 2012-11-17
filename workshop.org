@@ -164,6 +164,10 @@ http://orgmode.org/org.html#Setting-tags
 
 - [[file:~/institutions/tugraz/schulungen_voit/org-mode/kursmaterial/featureshow/org-mode-teaser.org][org-mode-teaser.org]] (local copy)
 
+** Contribute
+
+- [[http://orgmode.org/worg/org-contribute.html][How to contribute to Org?]]
+
 ** FIXXME: further items
 
 
