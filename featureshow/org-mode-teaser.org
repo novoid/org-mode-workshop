@@ -143,7 +143,7 @@ foo bar
 - visibility
   - ~TAB~      *visibility cycling*
   - ~S-TAB~    change buffer visibility
-  - ~C-c C-r~  *reveal context* (not bound?)
+  - ~C-c C-r~  *reveal context*
   - per-file visibility ~#+STARTUP: overview~ and so on: ([[http://orgmode.org/org.html#Visibility-cycling][docu]])
 - motion
   - ~C-c C-n~   *next heading*
@@ -944,7 +944,7 @@ Greek characters \alpha \beta
 
 Things I did not include yet but are worth mentioning:
 
-- [ ] 
+- [ ] org-protocol
 
 * Testing section                                                  :noexport:
 :PROPERTIES:
