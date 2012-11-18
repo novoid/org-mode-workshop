@@ -164,9 +164,31 @@ http://orgmode.org/org.html#Setting-tags
 
 - [[file:~/institutions/tugraz/schulungen_voit/org-mode/kursmaterial/featureshow/org-mode-teaser.org][org-mode-teaser.org]] (local copy)
 
+** Documentation
+
+- this document: https://github.com/novoid/org-mode-workshop
+- project: http://orgmode.org
+  - great [[http://orgmode.org/org-mode-support.html][community]], active [[http://lists.gnu.org/mailman/listinfo/emacs-orgmode][mailinglist]] ([[http://news.gmane.org/gmane.emacs.orgmode][gmane]])
+  - documentation: http://orgmode.org/org.html
+  - [[http://orgmode.org/worg/org-people.html#sec-22][My userpage on Worg]]
+- even [[http://orgmode.org/org-mode-documentation.html][more documentation]]
+- example with many preferences [[http://doc.norang.ca/org-mode.html][Organize Your Life In Plain Text]]
+
+** Other Demo Sources
+
+- http://orgmode.org/orgcard.txt
+- https://github.com/vxc/org-mode-ws
+- http://pascal.iiit.ac.in/~itws2/
+  - http://pascal.iiit.ac.in/~itws2/topics/org-mode/test.org.txt
+- http://dto.github.com/notebook/orgtutorial.html
+- [[http://orgmode.org/worg/org-tutorials/org-beamer/tutorial.html][Writing Beamer presentations in org-mode]]
+- http://www.suenkler.info/emacs-orgmode.html
+
 ** Contribute
 
 - [[http://orgmode.org/worg/org-contribute.html][How to contribute to Org?]]
+  - WORG
+- [[https://lists.gnu.org/mailman/listinfo/emacs-orgmode][Mailinglist]] ([[http://news.gmane.org/gmane.emacs.orgmode][Gmane]])
 
 ** FIXXME: further items
 

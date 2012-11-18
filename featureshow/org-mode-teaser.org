@@ -97,6 +97,7 @@ http://orgmode.org/org.html#Setting-tags
 | DOWN  | arrow: down         |
 | LEFT  | arrow: left         |
 | RIGHT | arrow: right        |
+| SPC   | Space               |
 
 ** activate Org-mode
 
@@ -158,7 +159,7 @@ foo bar
   - ~M-LEFT~    *promote*
   - ~M-RIGHT~   *demote*
   - ~M-S-LEFT/RIGHT~  promote/demote with subitems
-- ~C-c C-c~  *toggle/modify* things
+- ~C-c C-c~  *toggle/modify* things ([[http://orgmode.org/org.html#The-very-busy-C_002dc-C_002dc-key][docu]])
   - checkbox: activate/deactivate, heading: tags, tables:
     re-calculate, jump footnote and back, update tables, update
     TODO-count, ...
@@ -498,7 +499,28 @@ foo bar
 
 - many, many, many more table features in the documentation!
 
-** capture, refile, archive
+** column view ([[http://orgmode.org/org.html#Column-view][docu]])
+:PROPERTIES:
+:COLUMNS:  %25ITEM %TAGS %PRIORITY %TODO %10MyProperties
+:MyProperties_ALL: "Thomas" "Maria" "Susan" "Joe"
+:END:
+
+- ~C-c C-x C-c~   activate column view
+- ~e~             edit value
+- ~n/p~           next/previous value
+- ~q~             quit column view
+- ~C-c C-x p~     set property
+
+*** example sub-item
+:PROPERTIES:
+:MyProperties: Maria
+:END:
+
+*** another example
+:PROPERTIES:
+:MyProperties: Thomas
+:END:
+** capture, refile, archive ([[http://orgmode.org/org.html#Capture-_002d-Refile-_002d-Archive][docu]])
 
 - ~C-c c~          *capture*
 - ~C-c C-w~        *refile*
@@ -509,11 +531,14 @@ foo bar
 - ~C-c C-x a~       toggle ARCHIVE tag
 - ~C-u C-c C-x a~   check direct children for archiving
 
-** dates & time
+** dates & time ([[http://orgmode.org/org.html#Dates-and-Times][docu]])
 
-- ~C-c .~    *insert active* <2012-04-23 Mon>
-- ~C-c !~    insert inactive [2012-04-23 Mon]
-- ~S-RIGHT/LEFT/UP/DOWN~  interactively change
+- ~C-c .~    *insert active* <2012-04-23 Mon>  (with ~C-u~: <2012-04-23 Mon 19:14>)
+- ~C-c !~    insert inactive [2012-04-23 Mon]  (with ~C-u~: [2012-04-23 Mon 19:14])
+- ~S-RIGHT/LEFT/UP/DOWN~  interactively change timestamp
+- ~C-c <~    *insert today*
+- ~C-c C-o~  open agenda for current timestamp
+
 - ~C-c C-d~  *insert DEADLINE*
 - ~C-c C-s~  *insert SCHEDULED*
 
@@ -533,17 +558,99 @@ foo bar
 
 - ~13:00-15:15~ or ~13:00+2:15~  time duration
 - ~<2012-11-15 Thu>-<2012-11-17 Sat>~ date duration
+- ~C-c C-y~ return time range between dates
 
-** agenda
+- ~UP/DOWN~ on time stamp start/end -> toggle active/inactive
 
-- ~C-c a a~  invoke Agenda view
-- ~j~        jump to date
-- view for day ~v d~, week ~v w~, or month ~v m~
-- moving forward ~f~ and backward ~b~
-- filtering by tags, strings, ...
-- FIXXME
+** agenda ([[http://orgmode.org/org.html#Agenda-Views][docu]])
 
-** source code
+- ~C-c [~    add buffer to agenda
+- ~C-c ]~    remove buffer from agenda
+- ~C-c a~    show agenda command menu
+- ~C-c a a~  *invoke agenda view*
+
+- ~C-c C-x <~  *lock agenda* to subtree
+- ~C-c C-x >~  *release* agenda restriction *lock*
+
+
+
+when being *in agenda* mode:
+
+- ~q~        *quit agenda*
+
+- ~j~        *jump to date*
+- ~.~        *goto today*
+- ~f/b~      *forward/back*
+- ~v~        *choose view menu*
+- ~d/w~      *day/week view*
+- ~v d/w/m~  view for day/week/month
+- ~r~        *refresh*
+
+- ~RET~   *goto item*
+- ~SPC~   show item
+- ~<~     *toggle filter to file*
+- ~F~     *toggle follow mode*
+- ~o~     *delete other window*
+- ~/~     filter by tag
+
+- ~E~     toggle entry text
+- ~R~     toggle clock report
+
+- ~t~         *change TODO state*
+- ~:~ or ~T~  *set tags*
+- ~S-UP/DOWN~     *set priority*
+- ~S-LEFT/RIGHT~  *change timestamp day*
+- ~>~         change timestamp to today
+- ~e~         set effort
+- ~,~         set priority
+
+- ~m~     mark
+- ~u~     unmark
+- ~B~     bulk action
+
+- clocking
+  - ~I~   start
+  - ~O~   stop
+  - ~X~   cancel
+  - ~J~   jump to running clock entry
+
+- attachments to TODO entries
+  - ~C-c C-a~    *attachment menu*
+  - ~C-c C-a s~  *set attachment folder*
+  - ~C-c C-a i~  inherit attachment folder
+  - ~C-c C-a o~  *open attachment*
+
+** clocking time ([[http://orgmode.org/org.html#Clocking-work-time][docu]])
+
+- ~C-c C-x C-i~     start clock on item
+- ~C-c C-x C-o/x~   stop or cancelx clock on item
+- ~C-c C-x C-d~     display total subtree times
+- ~C-c C-c~         remove displayed times
+- ~C-c C-x C-r~     insert/update table with report
+
+*** example sub-hierarchy with report
+
+#+BEGIN: clocktable :maxlevel 2 :scope subtree
+Clock summary at [2012-11-18 Sun 19:26]
+
+| Headline     | Time    |
+|--------------+---------|
+| *Total time* | *27:15* |
+|--------------+---------|
+#+END:
+
+**** example item
+:LOGBOOK:
+CLOCK: [2012-11-18 Sun 19:15]--[2012-11-18 Sun 19:23] =>  0:08
+:END:
+
+**** another item
+:LOGBOOK:
+CLOCK: [2012-11-18 Sun 19:26]--[2012-11-18 Sun 19:33] =>  0:07
+CLOCK: [2012-11-17 Sat 16:25]--[2012-11-18 Sun 19:25] => 27:00
+:END:
+
+** source code ([[http://orgmode.org/org.html#Working-With-Source-Code][docu]])
 
 - python "Hello World"
 - ~C-c '~      *edit in native mode*
@@ -554,13 +661,26 @@ foo bar
        print "Hello World"
  #+END_SRC
 
-** babel
+** babel ([[http://orgmode.org/org.html#Library-of-Babel][docu]])
+
+- http://orgmode.org/org.html#Languages
+  - 2012-04-23: 35(!) languages
+
+- ~C-c C-c~    *execute code*
+- ~C-c C-v j~  insert header argument (menu)
+
+- *many* shortcuts for all kind of things
+  - debugging
+  - output control
+  - navigation
+  - session handling
+
+- ~C-c C-v b~  execute babel in buffer
+- ~C-c C-v s~  execute babel in subtree
 
 *** babel simple ([[http://orgmode.org/org.html#Working-With-Source-Code][doc]])
 
 - some examples are taken from [[http://orgmode.org/worg/org-contrib/babel/intro.html][Worg: Introduction to Babel]]
-- http://orgmode.org/org.html#Languages
-  - 2012-04-23: 35(!) languages
 
 **** shell
 
@@ -611,6 +731,38 @@ Using result set "directories" from above as "dirs" in R below:
   pie(dirs[,1], labels = dirs[,2])
 #+end_src
 
+** LaTeX ([[http://orgmode.org/org.html#Embedded-LaTeX][docu]])
+
+- ~C-c '~        *open block native buffer*
+
+- ~C-c C-x C-l~  preview LaTeX fragments
+- ~C-c C-c~      quit preview
+- ~C-c C-x \~    toggle preview TeX characters as UTF-8
+
+Greek characters \alpha \beta
+
+- ~M-x org-cdlatex-mode~  CDLaTeX minor mode
+  - from http://staff.science.uva.nl/~dominik/Tools/cdlatex/
+  - similar to AucTeX
+  - ~C-c {~     insert environment
+  - ~equ TAB~   expands equation
+  - ~`~         insert math symbols (menu)
+
+#+BEGIN_LaTeX
+  
+  \section{Section Title}
+  
+  This is \emph{emphasized} and $y=x^2$ is an equation.
+  
+#+END_LaTeX
+
+** dynamic blocks with ELISP ([[http://orgmode.org/org.html#Dynamic-blocks][docu]])
+
+- execute ELISP functions in special blocks (see docu)
+
+- ~C-c C-x C-u~      update block
+- ~C-u C-c C-x C-u~  update buffer blocks
+
 ** Mobile-org ([[http://orgmode.org/org.html#MobileOrg][docu]])
 
 - great [[http://mobileorg.ncogni.to/][iOS app]]
@@ -630,6 +782,11 @@ Using result set "directories" from above as "dirs" in R below:
 
 ** export formats ([[http://orgmode.org/org.html#Exporting][docu]])
 
+- ~C-c C-e~   *export menu*
+- ~C-c ;~     toggle COMMENT keyword on entry
+
+- tag: "noexport"
+
 - ASCII/Latin-1/UTF-8 export
 - HTML
 - LaTeX
@@ -640,36 +797,21 @@ Using result set "directories" from above as "dirs" in R below:
 - Freemind
 - XOXO
 - iCalendar
+- ...
 
 - [ ] DEMO: export this as PDF (plain)
 - [ ] DEMO: export this as PDF (beamer)
 
-** customizations
+** many many many many more features!
+
+- sections above are only a small fraction of the feature-set of Org-mode!
+- read [[http://orgmode.org/org.html][the manual]] or [[http://news.gmane.org/gmane.emacs.orgmode][the mailinglist]] to get inspired :-)
+
+** customization per ...
 
 - per configuration
 - per file
 - per heading
-
-
-* Documentation
-
-- this document: https://github.com/novoid/org-mode-workshop
-- project: http://orgmode.org
-  - great [[http://orgmode.org/org-mode-support.html][community]], active [[http://lists.gnu.org/mailman/listinfo/emacs-orgmode][mailinglist]] ([[http://news.gmane.org/gmane.emacs.orgmode][gmane]])
-  - documentation: http://orgmode.org/org.html
-  - [[http://orgmode.org/worg/org-people.html#sec-22][My userpage on Worg]]
-- even [[http://orgmode.org/org-mode-documentation.html][more documentation]]
-- example with many preferences http://doc.norang.ca/org-mode.html
-
-** Other Demo Sources
-
-- http://orgmode.org/orgcard.txt
-- https://github.com/vxc/org-mode-ws
-- http://pascal.iiit.ac.in/~itws2/
-  - http://pascal.iiit.ac.in/~itws2/topics/org-mode/test.org.txt
-- http://dto.github.com/notebook/orgtutorial.html
-- [[http://orgmode.org/worg/org-tutorials/org-beamer/tutorial.html][Writing Beamer presentations in org-mode]]
-- http://www.suenkler.info/emacs-orgmode.html
 
 
 * Org-mode Applied
@@ -678,14 +820,17 @@ Using result set "directories" from above as "dirs" in R below:
 - *Org-mode as a Lego toolbox* to build customized solutions
 - these are *my personal* solutions
 
-** contacts
+** org-contacts
+
+- http://julien.danjou.info/projects/emacs-packages#org-contacts
 
 - contacts forming a hierarchy which reflects their relations
-- person-specific tasks, events, ... done right
-  - mixture of things related to person
-- meta-persons like "parents" or "Simpsons Family"
+  - meta-persons like "parents" or "Simpsons Family"
 
-- sparse trees
+- person-specific tasks, events, ... done right
+  - mixture of things related to *person*
+
+- sparse trees and column mode
 
 #+BEGIN_SRC emacs-lisp
 
@@ -799,9 +944,7 @@ Using result set "directories" from above as "dirs" in R below:
 
 Things I did not include yet but are worth mentioning:
 
-** TODO Column view ([[http://orgmode.org/org.html#Column-view][docu]])
-** clocking [[http://orgmode.org/org.html#Clocking-work-time][(docu]])
-
+- [ ] 
 
 * Testing section                                                  :noexport:
 :PROPERTIES:
