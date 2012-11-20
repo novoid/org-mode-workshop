@@ -509,17 +509,19 @@ foo bar
 - ~e~             edit value
 - ~n/p~           next/previous value
 - ~q~             quit column view
+- ~a~             edit allowed values
 - ~C-c C-x p~     set property
 
-*** example sub-item
+*** example sub-item                                               :mytag1:
 :PROPERTIES:
-:MyProperties: Maria
+:MyProperties: Susan
 :END:
 
-*** another example
+*** NEXT [#B] another example                                      :mytag2:
 :PROPERTIES:
 :MyProperties: Thomas
 :END:
+
 ** capture, refile, archive ([[http://orgmode.org/org.html#Capture-_002d-Refile-_002d-Archive][docu]])
 
 - ~C-c c~          *capture*
@@ -531,12 +533,44 @@ foo bar
 - ~C-c C-x a~       toggle ARCHIVE tag
 - ~C-u C-c C-x a~   check direct children for archiving
 
+#+BEGIN_SRC emacs-lisp
+;; ######################################################
+;; templates for capturing C-c c
+;; http://orgmode.org/org.html#Capture-templates
+(setq org-capture-templates
+      '(
+	("s" "shorts-todo" entry (file+headline "~/share/all/org-mode/misc.org" "shorts")
+	 "* NEXT %?\n:PROPERTIES:\n:CREATED: %U\n:END:\n\n" :empty-lines 1)
+	("e" "Event" entry (file+headline "~/share/all/org-mode/misc.org" "Events")
+	 "* %?\n:PROPERTIES:\n:CREATED: %U\n:END:\n\n" :empty-lines 1)
+	("i" "IST Templates")
+	("is" "IST shorts" entry (file+headline "~/share/all/org-mode/IST.org" "shorts")
+	 "* NEXT %?\n:PROPERTIES:\n:CREATED: %U\n:END:\n\n" :empty-lines 1)
+	("ie" "IST event" entry (file+headline "~/share/all/org-mode/IST.org" "Events")
+	 "* %?\n:PROPERTIES:\n:CREATED: %U\n:END:\n\n" :empty-lines 1)
+	("ii" "IST isst" entry (file+headline "~/share/all/org-mode/IST.org" "Events")
+	 "* %? IST isst: \n:PROPERTIES:\n:CREATED: %U\n:END:\n\n- [[contact:Ingo Pill][Ingo Pill]]\n- [[contact:Thomas Quartisch][Thomas Quartisch]]\n\n" :empty-lines 1)
+	("b" "Besorgung" entry (file+headline "~/share/all/org-mode/hardware.org" "Besorgungen")
+	 "* TODO %?\n:PROPERTIES:\n:CREATED: %U\n:END:\n\n" :empty-lines 1)
+	("C" "Clipboard" entry (file+headline "~/share/all/org-mode/misc.org" "shorts")
+	 "* TODO %?\n:PROPERTIES:\n:CREATED: %U\n:END:\n%x\n\n" :empty-lines 1)
+	("c" "capture to inbox, refile later" entry (file "~/share/all/org-mode/inbox.org")
+	 "\n* %?\n:PROPERTIES:\n:CREATED: %U\n:END:\n\n" :empty-lines 1)
+	("m" "movie" entry (file+headline "~/share/all/org-mode/movies.org" "inbox")
+	 "* TODO %?\n:PROPERTIES:\n:CREATED: %U\n:END:\n\n" :empty-lines 1)
+	("x" "xlog")
+	("xh" "xlog hometrainer" table-line (id "xlog-hometrainer") "| %T |  |  |  |")
+	("xk" "Keyboard Akkus leer" table-line (id "3407c9b7-1b41-443b-9254-32c4af3a54e8") "| %T |")
+      )
+)
+#+END_SRC
+
 ** dates & time ([[http://orgmode.org/org.html#Dates-and-Times][docu]])
 
 - ~C-c .~    *insert active* <2012-04-23 Mon>  (with ~C-u~: <2012-04-23 Mon 19:14>)
 - ~C-c !~    insert inactive [2012-04-23 Mon]  (with ~C-u~: [2012-04-23 Mon 19:14])
 - ~S-RIGHT/LEFT/UP/DOWN~  interactively change timestamp
-- ~C-c <~    *insert today*
+- ~C-c <~    *insert today* 
 - ~C-c C-o~  open agenda for current timestamp
 
 - ~C-c C-d~  *insert DEADLINE*
@@ -550,6 +584,7 @@ foo bar
 - ~.+2w~     repetition interval starting with last DONE timestamp
 - ~++3m~     never show multiple times even if not DONE
 - ~.+2d/4d~  show up on agenda not earlier as 2 days until 4 days
+- ~+1w -2d~  repeat weekly but show not earlier as two days before
 
 - ~C-c C-x c~  clone (recurring) event with time-shift  (~org-clone-subtree-with-time-shift~)
   - good idea: create recurring event and clone it with time-shift
@@ -557,7 +592,7 @@ foo bar
     possible
 
 - ~13:00-15:15~ or ~13:00+2:15~  time duration
-- ~<2012-11-15 Thu>-<2012-11-17 Sat>~ date duration
+- ~<2013-11-15 Fri>-<2013-11-17 Sun>~ date duration
 - ~C-c C-y~ return time range between dates
 
 - ~UP/DOWN~ on time stamp start/end -> toggle active/inactive
@@ -571,8 +606,6 @@ foo bar
 
 - ~C-c C-x <~  *lock agenda* to subtree
 - ~C-c C-x >~  *release* agenda restriction *lock*
-
-
 
 when being *in agenda* mode:
 
@@ -599,10 +632,10 @@ when being *in agenda* mode:
 - ~t~         *change TODO state*
 - ~:~ or ~T~  *set tags*
 - ~S-UP/DOWN~     *set priority*
+- ~,~             set priority
 - ~S-LEFT/RIGHT~  *change timestamp day*
 - ~>~         change timestamp to today
 - ~e~         set effort
-- ~,~         set priority
 
 - ~m~     mark
 - ~u~     unmark
@@ -623,7 +656,7 @@ when being *in agenda* mode:
 ** clocking time ([[http://orgmode.org/org.html#Clocking-work-time][docu]])
 
 - ~C-c C-x C-i~     start clock on item
-- ~C-c C-x C-o/x~   stop or cancelx clock on item
+- ~C-c C-x C-o/x~   stop or cancel clock on item
 - ~C-c C-x C-d~     display total subtree times
 - ~C-c C-c~         remove displayed times
 - ~C-c C-x C-r~     insert/update table with report
@@ -631,16 +664,17 @@ when being *in agenda* mode:
 *** example sub-hierarchy with report
 
 #+BEGIN: clocktable :maxlevel 2 :scope subtree
-Clock summary at [2012-11-18 Sun 19:26]
+Clock summary at [2012-11-19 Mon 11:17]
 
 | Headline     | Time    |
 |--------------+---------|
-| *Total time* | *27:15* |
+| *Total time* | *27:16* |
 |--------------+---------|
 #+END:
 
 **** example item
 :LOGBOOK:
+CLOCK: [2012-11-19 Mon 11:16]--[2012-11-19 Mon 11:17] =>  0:01
 CLOCK: [2012-11-18 Sun 19:15]--[2012-11-18 Sun 19:23] =>  0:08
 :END:
 
@@ -649,6 +683,13 @@ CLOCK: [2012-11-18 Sun 19:15]--[2012-11-18 Sun 19:23] =>  0:08
 CLOCK: [2012-11-18 Sun 19:26]--[2012-11-18 Sun 19:33] =>  0:07
 CLOCK: [2012-11-17 Sat 16:25]--[2012-11-18 Sun 19:25] => 27:00
 :END:
+
+** dynamic blocks with ELISP ([[http://orgmode.org/org.html#Dynamic-blocks][docu]])
+
+- execute ELISP functions in special blocks (see docu)
+
+- ~C-c C-x C-u~      update block
+- ~C-u C-c C-x C-u~  update buffer blocks
 
 ** source code ([[http://orgmode.org/org.html#Working-With-Source-Code][docu]])
 
@@ -684,7 +725,7 @@ CLOCK: [2012-11-17 Sat 16:25]--[2012-11-18 Sun 19:25] => 27:00
 
 **** shell
 
-#+BEGIN_SRC sh
+#+BEGIN_SRC sh 
 pwd
 #+END_SRC
 
@@ -704,15 +745,14 @@ return 42 + 7
 **** ditaa
 
 #+begin_src ditaa :file blue.png :cmdline -r
-+---------+
-| cBLU    |
-|         |
-|    +----+
-|    |cPNK|
-|    |    |
-+----+----+
+  +---------+
+  | cBLU    |
+  |         |
+  |    +----+
+  |    |cPNK|
+  |    |    |
+  +----+----+
 #+end_src
-
 
 *** babel advanced
 
@@ -723,13 +763,13 @@ return 42 + 7
   cd ~/archive/events_memories && du -sc * |grep -v total
 #+end_src
 
-
 Using result set "directories" from above as "dirs" in R below:
 
 #+name: directory-pie-chart(dirs = directories)
 #+begin_src R :session R-pie-example :file ./dirs.png
   pie(dirs[,1], labels = dirs[,2])
 #+end_src
+
 
 ** LaTeX ([[http://orgmode.org/org.html#Embedded-LaTeX][docu]])
 
@@ -739,7 +779,7 @@ Using result set "directories" from above as "dirs" in R below:
 - ~C-c C-c~      quit preview
 - ~C-c C-x \~    toggle preview TeX characters as UTF-8
 
-Greek characters \alpha \beta
+Greek characters \alpha \beta \phi \LaTeX{}  $\varphi$
 
 - ~M-x org-cdlatex-mode~  CDLaTeX minor mode
   - from http://staff.science.uva.nl/~dominik/Tools/cdlatex/
@@ -755,30 +795,6 @@ Greek characters \alpha \beta
   This is \emph{emphasized} and $y=x^2$ is an equation.
   
 #+END_LaTeX
-
-** dynamic blocks with ELISP ([[http://orgmode.org/org.html#Dynamic-blocks][docu]])
-
-- execute ELISP functions in special blocks (see docu)
-
-- ~C-c C-x C-u~      update block
-- ~C-u C-c C-x C-u~  update buffer blocks
-
-** Mobile-org ([[http://orgmode.org/org.html#MobileOrg][docu]])
-
-- great [[http://mobileorg.ncogni.to/][iOS app]]
-  - no iOS on my side
-- "advanced-beta" of [[http://wiki.github.com/matburt/mobileorg-android/][Android app]]
-  - ssh, scp, WEBDAV, gpg encryption, ...
-
-#+BEGIN_SRC emacs-lisp
-;;; http://orgmode.org/org.html#MobileOrg
-;;; directory where to store MobileOrg-files
-(setq org-mobile-directory "~/share/all/org-mode/mobile-org/")
-(setq org-directory "~/share/all/org-mode")
-(setq org-mobile-inbox-for-pull "~/share/all/org-mode/inbox.org")
-(setq org-mobile-force-id-on-agenda-items nil)
-'(org-mobile-files (quote ("~/share/all/org-mode/contacts.org" "~/data/share/all/org-mode/hardware.org" )))
-#+END_SRC
 
 ** export formats ([[http://orgmode.org/org.html#Exporting][docu]])
 
@@ -802,6 +818,23 @@ Greek characters \alpha \beta
 - [ ] DEMO: export this as PDF (plain)
 - [ ] DEMO: export this as PDF (beamer)
 
+** Mobile-org ([[http://orgmode.org/org.html#MobileOrg][docu]])
+
+- great [[http://mobileorg.ncogni.to/][iOS app]]
+  - no iOS on my side
+- "advanced-beta" of [[http://wiki.github.com/matburt/mobileorg-android/][Android app]]
+  - Dropbox, ssh, scp, WEBDAV, gpg encryption, ...
+
+#+BEGIN_SRC emacs-lisp
+;;; http://orgmode.org/org.html#MobileOrg
+;;; directory where to store MobileOrg-files
+(setq org-mobile-directory "~/share/all/org-mode/mobile-org/")
+(setq org-directory "~/share/all/org-mode")
+(setq org-mobile-inbox-for-pull "~/share/all/org-mode/inbox.org")
+(setq org-mobile-force-id-on-agenda-items nil)
+'(org-mobile-files (quote ("~/share/all/org-mode/contacts.org" "~/data/share/all/org-mode/hardware.org" )))
+#+END_SRC
+
 ** many many many many more features!
 
 - sections above are only a small fraction of the feature-set of Org-mode!
@@ -819,6 +852,20 @@ Greek characters \alpha \beta
 - everybody has *different requirements*
 - *Org-mode as a Lego toolbox* to build customized solutions
 - these are *my personal* solutions
+
+** yasnippet: "tbrief"
+
+1. mkdir a_letter
+2. cd a_letter
+3. create letter.org
+4. open letter.org in Emacs
+5. execute yasnippet command "tbrief"
+6. enter information
+7. execute babel-block
+8. edit TeX file generated
+9. make pdf
+10. optionally: delete letter.org
+11. letter ready to send :-)
 
 ** org-contacts
 
@@ -950,8 +997,6 @@ Things I did not include yet but are worth mentioning:
 :PROPERTIES:
 :ID: teaser-tests
 :END:
-
-gdipruef
 
 * Local Variables                                                  :noexport:
 # Local Variables:
