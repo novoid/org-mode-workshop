@@ -211,6 +211,7 @@ http://orgmode.org/org.html#Setting-tags
   - [[http://orgmode.org/worg/org-people.html#sec-22][My userpage on Worg]]
 - even [[http://orgmode.org/org-mode-documentation.html][more documentation]]
 - example with many preferences [[http://doc.norang.ca/org-mode.html][Organize Your Life In Plain Text]]
+- Support for various things: http://orgmode.org/worg/org-contrib/
 
 ** Org-mode Applied
 
@@ -218,7 +219,14 @@ http://orgmode.org/org.html#Setting-tags
 - *Org-mode as a Lego toolbox* to build customized solutions
 - these are *my personal* solutions
 
+*** git and Org-mode
+
+- auto-commit changes in files: https://github.com/n3v1k/gitwatch
+
 *** yasnippet: "tbrief"
+
+for expanding TAB within Org-mode search for:
+: defun yas/org-very-safe-expand
 
 1. mkdir a_letter
 2. cd a_letter
@@ -246,28 +254,27 @@ http://orgmode.org/org.html#Setting-tags
 
 #+BEGIN_SRC emacs-lisp
 
-(setq org-contacts-files "~/share/all/org-mode/contacts.org")
-
-(setq org-link-abbrev-alist
-  '(
-	("contact" . "~/share/all/org-mode/contacts.org::/\*.*%s/")
-  ))
-
 ;; ######################################################
 ;; contact management with org-contacts
 ;; http://julien.danjou.info/org-contacts.html
 (require 'org-contacts)
 (custom-set-variables '(org-contacts-files "~/share/all/org-mode/contacts.org"))
 
+(setq org-link-abbrev-alist
+  '(
+	("contact" . "~/share/all/org-mode/contacts.org::/\*.*%s/")
+  ))
+
 #+END_SRC
 
 *** references
 
-- [[file:~/share/all/org-mode/references.org][My Reference-Management]]
+- [[file:~/share/all/org-mode/references.org][My Reference-Management]] (local copy)
 - adding a reference (from bibtex file)
   - tagging
   - link to PDF
 - integrated annotated PDF files
+- http://orgmode.org/manual/Link-abbreviations.html
 
 #+BEGIN_SRC emacs-lisp
 ;; ######################################################
@@ -351,8 +358,13 @@ http://orgmode.org/org.html#Setting-tags
 - Android Text Messages (SMS)
 - EXIF (photographs)
 
+*** Reproducible Research
 
-
+- https://github.com/novoid/orgmode-iKNOW2012
+- https://github.com/novoid/orgmode-ACM-template
+- http://orgmode.org/worg/org-papers.html
+  - http://orgmode.org/worg/org-contrib/babel/uses.html#sec-6
+ 
 ** Other Demo Sources
 
 - http://orgmode.org/orgcard.txt
@@ -361,7 +373,7 @@ http://orgmode.org/org.html#Setting-tags
   - http://pascal.iiit.ac.in/~itws2/topics/org-mode/test.org.txt
 - http://dto.github.com/notebook/orgtutorial.html
 - [[http://orgmode.org/worg/org-tutorials/org-beamer/tutorial.html][Writing Beamer presentations in org-mode]]
-- http://www.suenkler.info/emacs-orgmode.html
+- http://www.suenkler.info/emacs-orgmode.html 
 
 ** Contribute
 

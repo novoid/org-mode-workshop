@@ -61,9 +61,10 @@ http://orgmode.org/org.html#Setting-tags
 | RIGHT | arrow: right        |
 | SPC   | Space               |
 
-** activate Org-mode
+** activating Org-mode
 
-http://orgmode.org/org.html#Activation
+- http://orgmode.org/org.html#Activation
+- http://orgmode.org/worg/org-configs/org-customization-guide.html
 
 [[http://orgmode.org/worg/org-tutorials/orgtutorial_dto.html#sec-1-2][Activation of Org-mode (external Tutorial)]]:
 #+BEGIN_SRC emacs-lisp
@@ -733,7 +734,6 @@ Using result set "directories" from above as "dirs" in R below:
 #+begin_src R :session R-pie-example :file ./dirs.png
   pie(dirs[,1], labels = dirs[,2])
 #+end_src
-
 
 ** LaTeX ([[http://orgmode.org/org.html#Embedded-LaTeX][docu]])
 
