@@ -43,44 +43,6 @@ http://orgmode.org/org.html#Setting-tags
   - see: Local Variables below
 
 
-* Org-mode Principles and Advantages
-** text files
-
-- text as the lowest common denominator
-- portable
-- future-proof
-- process it with grep, python, ...
-- VCS like git, Subversion, ...
-- easy synchronization
-- advanced search & replace everywhere
-- ...
-
-** easy to learn
-
-- outliner (~5 minutes)
-- todo-management (~10 minutes)
-- GTD implementation (~15 minutes)
-- more and more advanced topics
-  - one by one
-  - depending on personal requirements
-
-** scales
-
-- performance
-- learn/use only those parts you need
-
-** wiki-like
-
-- personal knowledge-base
-- internal and external links
-- very open to external files, APIs, ...
-
-** Meta-data
-
-- define as much as you need
-- you've got all possibilities
-
-
 * A Subset(!) of Org-mode Basics
 
 - Find this document on https://github.com/novoid/org-mode-workshop
@@ -100,6 +62,8 @@ http://orgmode.org/org.html#Setting-tags
 | SPC   | Space               |
 
 ** activate Org-mode
+
+http://orgmode.org/org.html#Activation
 
 [[http://orgmode.org/worg/org-tutorials/orgtutorial_dto.html#sec-1-2][Activation of Org-mode (external Tutorial)]]:
 #+BEGIN_SRC emacs-lisp
