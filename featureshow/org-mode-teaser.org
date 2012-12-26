@@ -44,6 +44,9 @@ http://orgmode.org/org.html#Setting-tags
 
 
 * A Subset(!) of Org-mode Basics
+:PROPERTIES:
+:VISIBILITY: children
+:END:
 
 - Find this document on https://github.com/novoid/org-mode-workshop
 
@@ -434,6 +437,7 @@ foo bar
 
 - ~=$1+$2~            value = sum of 1st and 2nd column
 - ~:=vsum(@I..@II)~   field = sum between 1st and 2nd hline
+- ~C-u C-u C-c C-c~   recompute table with iterations ([[http://orgmode.org/org.html#Updating-the-table][docu]])
 
 - ~#+TBLFM: $3 = $1 + $2~             table formula
 - ~#+TBLFM: $1 = -1 + 1 :: @2$1 = 1~  incremental numbers
@@ -529,6 +533,15 @@ foo bar
       )
 )
 #+END_SRC
+
+** attachments ([[http://orgmode.org/org.html#Attachments][docu]])
+
+- ~C-c C-a~    *org-attach* (menu)
+  - ~i~        *inherit*
+  - ~s~        *set directory*
+  - ~a~        attach: move file to task directory
+  - ~c/m/l~    attach: copy/move/link file
+- much more
 
 ** dates & time ([[http://orgmode.org/org.html#Dates-and-Times][docu]])
 
