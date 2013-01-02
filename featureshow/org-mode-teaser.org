@@ -120,6 +120,7 @@ foo bar
   - ~C-c C-j~   jump (goto)
   - ~C-c C-f~   forward same level
   - ~C-c C-b~   backward same level
+  - ~M-x org-goto~   nifty inerface for searching within an Org-mode buffer
 - create basic elements
   - ~C-RET~     *new heading* below
 - move elements
