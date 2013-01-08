@@ -208,6 +208,7 @@ http://orgmode.org/org.html#Setting-tags
 - project: http://orgmode.org
   - great [[http://orgmode.org/org-mode-support.html][community]], active [[http://lists.gnu.org/mailman/listinfo/emacs-orgmode][mailinglist]] ([[http://news.gmane.org/gmane.emacs.orgmode][gmane]])
   - documentation: http://orgmode.org/org.html
+    - also accessible directly within Emacs: ~C-h i~
   - [[http://orgmode.org/worg/org-people.html#sec-22][My userpage on Worg]]
 - even [[http://orgmode.org/org-mode-documentation.html][more documentation]]
 - example with many preferences [[http://doc.norang.ca/org-mode.html][Organize Your Life In Plain Text]]
