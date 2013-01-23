@@ -249,6 +249,14 @@ check lists:
 - ~C-c C-z~      timed LOGBOOK entry
 - ~:ID: label~   define ID in PROPERTIES
 
+- hint: the property CATEGORY gets inherited and displayed on the
+  agenda:
+
+*** NEXT Test with category property                                :mytag:
+:PROPERTIES:
+:CATEGORY: mycategory
+:END:
+
 ** blocks ([[http://orgmode.org/org.html#Blocks][docu]])
 
 - encapsulating content with begin...end structure
