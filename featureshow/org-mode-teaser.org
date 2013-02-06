@@ -170,6 +170,17 @@ This is a quite boring text just to show some body content.
 - selective headlines using :crypt:
 - ~org-decrypt-entry~
 
+*** time stamps when taking notes ([[http://orgmode.org/manual/Relative-timer.html][docu]])
+
+- ~C-c C-x .~   start timer
+- ~C-c C-x -~   insert list item with time
+- ~M-<RET>~     insert heading with time
+- ~C-c C-x ,~   toggle timer pause
+- ~C-u C-c C-x ,~  stop timer
+
+- also handy:
+  - ~C-c C-x ;~    set countdown
+
 ** sparse trees ([[http://orgmode.org/org.html#Sparse-trees][docu]])
 
 - Filtering
