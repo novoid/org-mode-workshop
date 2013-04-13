@@ -768,6 +768,27 @@ Using result set "directories" from above as "dirs" in R below:
   pie(dirs[,1], labels = dirs[,2])
 #+end_src
 
+**** table using python function to calculate values 
+
+#+NAME: epoch2day
+#+BEGIN_SRC python :results output :var epoch=1262675465119
+time = epoch
+import datetime
+strtime = str(time)
+datetimestamp = datetime.datetime.utcfromtimestamp(int(strtime[:10]))
+print datetimestamp.strftime('[%Y-%m-%d %a %H:%M:%S]')
+#+END_SRC
+
+#+RESULTS: epoch2day
+: [2010-01-05 Tue 07:11:05]
+
+|  *UNIX epoch* | *time-stamp*              |
+|---------------+---------------------------|
+| 1262675465119 | [2010-01-05 Tue 07:11:05] |
+|    1234567890 | [2009-02-13 Fri 23:31:30] |
+|    1000000000 | [2001-09-09 Sun 01:46:40] |
+#+TBLFM: $2='(sbe epoch2day (epoch $1))
+
 ** LaTeX ([[http://orgmode.org/org.html#Embedded-LaTeX][docu]])
 
 - ~C-c '~        *open block native buffer*
