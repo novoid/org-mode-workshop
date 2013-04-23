@@ -578,7 +578,7 @@ foo bar
 - ~C-u C-c C-s~   removing SCHEDULED
 - ~C-c / d~       sparse tree with deadlines
 
-- ~DEADLINE <YYYY-MM-DD DoW +2d~   defining repeated events/tasks
+- ~DEADLINE <YYYY-MM-DD DoW +2d>~   defining repeated events/tasks
 - ~.+2w~     repetition interval starting with last DONE timestamp
 - ~++3m~     never show multiple times even if not DONE
 - ~.+2d/4d~  show up on agenda not earlier as 2 days until 4 days
@@ -695,7 +695,7 @@ CLOCK: [2012-11-17 Sat 16:25]--[2012-11-18 Sun 19:25] => 27:00
 - ~C-c '~      *edit in native mode*
 - ~<s + TAB~   *easy templates* ([[http://orgmode.org/org.html#Easy-Templates][docu]])
 
-#+BEGIN_SRC python
+#+BEGIN_SRC python :results output
   def foo(argument):
        print "Hello World"
  #+END_SRC
