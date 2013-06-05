@@ -78,7 +78,24 @@ http://orgmode.org/org.html#Setting-tags
 (setq org-log-done t)
 #+END_SRC
 
-- Org-mode *minor mode* (structure editing and lists) ~orgstruct-mode~ ([[http://orgmode.org/org.html#Orgstruct-mode][docu]])
+- Org-mode *minor mode* (structure editing and lists) ~orgstruct-mode~
+  ([[http://orgmode.org/org.html#Orgstruct-mode][docu]])
+
+** Org-mode documentation
+
+- http://orgmode.org/org.html is up to date
+- ~C-h i~ (while being in an Org-mode file) gives you a local version :-)
+
+*** In case of Org-mode documentation does not work
+
+For using Org-mode from a local git repository: add following to your
+configuration:
+
+: (add-to-list 'Info-additional-directory-list "~/.emacs.d/<YOURDIRECTORY>/org-mode/doc/")
+
+OR: install Org-mode documentation to your system with: 
+
+: cd $ORGMODEDIRECTORY && sudo make install-info
 
 ** text formatting syntax [[http://orgmode.org/org.html#Emphasis-and-monospace][(docu)]]
 
@@ -436,6 +453,24 @@ foo bar
   - ~work+TODO="WAITING"|home+TODO="WAITING"~  Waiting tasks both at work and at home
 
 *** example                                                           :tag:
+
+*** Tag groups ([[http://orgmode.org/manual/Tag-groups.html][docu]])
+
+- searching for a group tag return matches of all member tags as well
+- example:
+
+#+TAGS: { @read: @read_book @read_ebook }
+
+#+BEGIN_SRC elisp
+  (setq org-tag-alist '((:startgroup . nil)
+                        ("@read" . nil)
+                        (:grouptags . nil)
+                        ("@read_book" . nil)
+                        ("@read_ebook" . nil)
+                        (:endgroup . nil)))
+#+END_SRC
+
+- searching for "@read" also returns "@read_book" and "@read_ebook"
 
 ** tables simple [[http://orgmode.org/org.html#Tables][(docu)]]
 
@@ -835,6 +870,22 @@ Greek characters \alpha \beta \phi \LaTeX{}  $\varphi$
 
 - [ ] DEMO: export this as PDF (plain)
 - [ ] DEMO: export this as PDF (beamer)
+
+*** Export options ([[http://orgmode.org/manual/Export-options.html][docu]])  
+:PROPERTIES:
+:EXPORT_FILE_NAME: my-file-name
+:EXPORT_TITLE: the title to be shown (default is the heading name)
+:EXPORT_TEXT: Some descriptive text to be inserted at the beginning.
+:EXPORT_AUTHOR: the author (default taken from user-full-name)
+:EXPORT_DATE: a date, an Org timestamp, or a format string for format-time-string
+:EXPORT_OPTIONS: toc:nil author:nil ^:nil *:nil
+:END:
+
+- per file:
+  - ~C-c C-e t~ (org-insert-export-options-template)
+- per heading:
+  - see properties drawer above
+  - EXPORT_OPTIONS: see [[http://orgmode.org/manual/Export-options.html][docu]]
 
 ** Mobile-org ([[http://orgmode.org/org.html#MobileOrg][docu]])
 
