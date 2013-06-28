@@ -295,6 +295,61 @@ Some example from a text file.
 #+END_EXAMPLE
 
 - more of it in the Babel section later on
+- differences between non-source-code blocks ([[http://orgmode.org/org.html#Literal-examples][docu]]):
+
+| *type*  | *indendation* | *blank lines* | *line breaks* | *Org syntax* | *notes*                           |
+|---------+---------------+---------------+---------------+--------------+-----------------------------------|
+| example | preserved     | preserved     | preserved     | ignored      | like SRC block without a language |
+| verse   | preserved     | preserved     | preserved     | recognized   |                                   |
+| quote   | preserved     | preserved     | not preserved | recognized   | for quoting text                  |
+| center  | not preserved | preserved     | not preserved | recognized   |                                   |
+
+*** examples for non-source-code blocks
+
+#+BEGIN_EXAMPLE
+This is a test.
+
+Demonstration of long lines within a non-source-code block like this or that or something else which is quite good.
+
+   Space upfront
+
+   [[id:foobar]] *bold* /italic/
+#+END_EXAMPLE
+
+#+BEGIN_VERSE
+This is a test.
+
+Demonstration of long lines within a non-source-code block like this or that or something else which is quite good.
+
+   Space upfront
+
+   [[id:foobar]] *bold* /italic/
+
+#+END_VERSE
+
+#+BEGIN_QUOTE
+This is a test.
+
+Demonstration of long lines within a non-source-code block like this
+or that or something else which is quite good.
+
+   Space upfront
+
+   [[id:foobar]] *bold* /italic/
+
+#+END_QUOTE
+
+#+BEGIN_CENTER
+This is a test.
+
+Demonstration of long lines within a non-source-code block like this
+or that or something else which is quite good.
+
+   Space upfront
+
+   [[id:foobar]] *bold* /italic/
+
+#+END_CENTER
 
 ** links [[http://orgmode.org/org.html#Hyperlinks][(docu)]]
 
