@@ -574,6 +574,8 @@ foo bar
 - ~C-c C-c~   update values
 - ~C-c }~     visualize rows/columns
 - ~C-c '~     edit formula in separate buffer
+  - ~C-c C-r~ switch between internal references (@3$2) and standard references (B3)
+  - ~S-<up>/<down>/<left>/<right>~  shift reference at point
 - [[http://orgmode.org/worg/org-tutorials/org-spreadsheet-intro.html#sec-7][debugging formulas]]
 
 - many, many, many more table features in the documentation!
