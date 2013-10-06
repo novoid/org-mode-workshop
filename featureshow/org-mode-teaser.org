@@ -579,6 +579,11 @@ foo bar
 - [[http://orgmode.org/worg/org-tutorials/org-spreadsheet-intro.html#sec-7][debugging formulas]]
 
 - many, many, many more table features in the documentation!
+  - http://orgmode.org/worg/org-tutorials/index.html#sec-3-2
+  - http://orgmode.org/worg/org-faq.html#Tables
+    - [[http://orgmode.org/worg/org-faq.html#fill-table-column-with-incremental-numbers][incremental numbers]], [[http://orgmode.org/worg/org-faq.html#table-column-filled-with-ERROR][what to do on #ERROR in columns]], ...
+  - http://orgmode.org/worg/org-hacks.html#sec-1-4
+    - calculations using time, date, hex, GPS, ...
 
 *** referencing example with detailed explanation
 
@@ -625,6 +630,7 @@ layout and then the very same example in a row (horizontal) based layout:
       (~remote(Income2012v, @@#$1)~) to the first column in this table
       (~$1~)
     - this is because I am too lazy to enter all names once again :-)
+    - see also [[http://orgmode.org/worg/org-hacks.html#field-coordinates-in-formulas][Org-hacks]] for field formulas
   - ~$2=remote(Income2012v, @@#$3)~
     - values: ~10; 24; 17; 51~
     - copy the content of the second column of table "Income2012v" to the
@@ -671,6 +677,7 @@ layout and then the very same example in a row (horizontal) based layout:
     - column two to four of first row (~@1$2..@1$4~) are copied from
       the corresponding fields of the first row (~@1$$#~) of table
       "Income2012h"
+    - see also [[http://orgmode.org/worg/org-hacks.html#field-coordinates-in-formulas][Org-hacks]] for field formulas
   - ~@2=remote(Income2012h, @3$$#)~
     - values: ~2012 Income June |   10 |    24 |   17 |   51~
     - the second row (~@2~) is copied from the corresponding fields of
