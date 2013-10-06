@@ -3,7 +3,7 @@
 #+TITLE:     Org-mode Teaser Demo
 #+AUTHOR:    Karl Voit
 #+EMAIL:     tools@Karl-Voit.at
-#+DATE:      2012-04-23 Mon
+#+DATE:      2013-10-06 Sun
 #+DESCRIPTION:
 #+KEYWORDS:
 #+LANGUAGE:  en
@@ -43,12 +43,17 @@ http://orgmode.org/org.html#Setting-tags
   - see: Local Variables below
 
 
-* A Subset(!) of Org-mode Basics
+* Org-mode by Examples
 :PROPERTIES:
 :VISIBILITY: children
 :END:
 
-- Find this document on https://github.com/novoid/org-mode-workshop
+- This is a subset(!) of Org-mode basics to demonstrate the main
+  features (sometimes probably more) of this wonderful tool
+
+- Find the newest version of this document on
+  [[https://github.com/novoid/org-mode-workshop]]
+
 
 #+TBLNAME: key-legend
 | *key* | *description*       |
@@ -1100,6 +1105,8 @@ Things I did not include yet but are worth mentioning:
 :PROPERTIES:
 :ID: teaser-tests
 :END:
+
+Feel free to use this space to test something.
 
 * Local Variables                                                  :noexport:
 # Local Variables:
