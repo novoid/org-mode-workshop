@@ -580,6 +580,116 @@ foo bar
 
 - many, many, many more table features in the documentation!
 
+*** referencing example with detailed explanation
+
+Here is another example working with tables and referencing other
+tables. I did this example twice: first in a column (vertical) based
+layout and then the very same example in a row (horizontal) based layout:
+
+**** column-based
+
+#+NAME: Income2012v
+|       | Income May 2012 | Income June 2012 |
+|-------+-----------------+------------------|
+| Joe   |              12 |               10 |
+| Alice |              22 |               24 |
+| Bob   |              16 |               17 |
+|-------+-----------------+------------------|
+| sum   |              50 |               51 |
+
+#+NAME: comparison-table-vertical
+|       | June 2012 (from above) | plus 20 percent | June 2013 | Difference |
+|-------+------------------------+-----------------+-----------+------------|
+| Joe   |                     10 |            12.0 |        11 |       -1.0 |
+| Alice |                     24 |            28.8 |        31 |        2.2 |
+| Bob   |                     17 |            20.4 |        21 |        0.6 |
+|-------+------------------------+-----------------+-----------+------------|
+| sum   |                     51 |                 |           |        1.8 |
+#+TBLFM: @>$5=vsum(@I..@II)::@>$3=string("")::$1=remote(Income2012v, @@#$1)::$2=remote(Income2012v, @@#$3)::$3=1.2 * remote(Income2012v, @@#$3);%.1f::$5=$4-$3;%.1f
+
+- all formulas explained in detail:
+  - ~@>$5=vsum(@I..@II)~
+    - value: ~1.8~
+    - last row (~@>~) of column five (~$5~) is the sum of column five
+      between first and second horizontal line (~@I..@II~)
+  - ~@>$3=string("")~
+    - no value (empty)
+    - overwrite the last row (~@>~) of column three (~$3~) with an empty
+      string
+    - otherwise it would get 1.2 times the value of corresponding
+      column of table Income2012v as well - I chose not to want this
+      sum in this column
+  - ~$1=remote(Income2012v, @@#$1)~
+    - values: ~Joe~ until ~sum~
+    - copy content of the first column of table "Income2012v"
+      (~remote(Income2012v, @@#$1)~) to the first column in this table
+      (~$1~)
+    - this is because I am too lazy to enter all names once again :-)
+  - ~$2=remote(Income2012v, @@#$3)~
+    - values: ~10; 24; 17; 51~
+    - copy the content of the second column of table "Income2012v" to the
+      second column in this table
+    - you could skip this column and calculate the values of the next
+      columns with direct references to ~remote(Income2012v, @@#$3)~
+      as well. However, it is more easy to compare visually if the
+      values from 2012 are shown here as well (usability/readability)
+    - note: by convention, only the values after the first horizontal
+      line are taken
+  - ~$3=1.2 * remote(Income2012v, @@#$3);%.1f~
+    - values: ~12.0; 28.8; 20.4; 61.2~
+    - column three (~$3~) is 120 percent of the values of the third
+      column of table "Income2012v" with one decimal place (~;%.1f~)
+    - note: 61.2 (1.2 times 51) is overwritten by formula ~@>$3~ from
+      above
+  - ~$5=$4-$3;%.1f~
+    - values: ~-1.0; 2.2; 0.6~
+    - column five (~$5~) is the difference between column four to
+      column three with one decimal place
+
+**** row-based
+
+#+NAME: Income2012h
+|                  | Joe | Alice | Bob | sum |
+| Income May 2012  |  12 |    22 |  16 |  50 |
+| Income June 2012 |  10 |    24 |  17 |  51 |
+
+#+NAME: comparison-table-horizontal
+|                  |  Joe | Alice |  Bob |  sum |
+| 2012 Income June |   10 |    24 |   17 |   51 |
+| plus 20 percent  | 12.0 |  28.8 | 20.4 | 60.0 |
+| June 2013        |   11 |    31 |   21 |      |
+| Difference       | -1.0 |   2.2 |  0.6 |  1.8 |
+#+TBLFM: @>$>=vsum(@5$2..@5$4)::@1$2..@1$4=remote(Income2012h, @1$$#)::@2=remote(Income2012h, @3$$#)::@3$2..@3$4=1.2 * remote(Income2012h, @3$$#);%.1f::@5$2..@5$4=@4-@3;%.1f
+
+- all formulas explained in detail:
+  - ~@>$>=vsum(@5$2..@5$4)~
+    - value: ~1.8~
+    - last column in last row (~@>$>~) is the vector-sum (~vsum~) of
+      column two to four of fifth row (~@5$2..@5$4~)
+  - ~@1$2..@1$4=remote(Income2012h, @1$$#)~
+    - values: ~Joe | Alice |  Bob |  sum~
+    - column two to four of first row (~@1$2..@1$4~) are copied from
+      the corresponding fields of the first row (~@1$$#~) of table
+      "Income2012h"
+  - ~@2=remote(Income2012h, @3$$#)~
+    - values: ~2012 Income June |   10 |    24 |   17 |   51~
+    - the second row (~@2~) is copied from the corresponding fields of
+      the first row (~@1$$#~) of table "Income2012h"
+    - my guess: "2012" is moved to the beginning of the field most
+      probably because it is interpreted as numeric value and not as
+      string
+  - ~@3$2..@3$4=1.2 * remote(Income2012h, @3$$#);%.1f~
+    - values: ~12.0 |  28.8 | 20.4 | 60.0~
+    - the columns two to four of the third row (~@3$2..@3$4~) is 120
+      percent of the corresponding values of the third row (~@3$$#~)
+      of the table "Income2012h" with one decimal place (~;%.1f~)
+  - ~@5$2..@5$4=@4-@3;%.1f~
+    - values: ~-1.0 |   2.2 |  0.6~
+    - the column two to four of the fifth row (~@5$2..@5$4~) is the
+      difference of the values in the corresponding values of the
+      fourth row and the third row (~@4-@3~) with one decimal place
+      (~;%.1f~)
+
 ** column view ([[http://orgmode.org/org.html#Column-view][docu]])
 :PROPERTIES:
 :COLUMNS:  %25ITEM %TAGS %PRIORITY %TODO %10MyProperties
