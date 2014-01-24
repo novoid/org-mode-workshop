@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# -*- mode: org; coding: utf-8; -*-
 * Header Information                                               :noexport:
 #+TITLE:     Org-mode Teaser Demo
 #+AUTHOR:    Karl Voit
@@ -808,6 +808,10 @@ layout and then the very same example in a row (horizontal) based layout:
 - ~C-c C-y~ return time range between dates
 
 - ~UP/DOWN~ on time stamp start/end -> toggle active/inactive
+
+*Note:* please do not use time-stamps prior to [[https://en.wikipedia.org/wiki/Unix_time][UNIX epoch]] which is
+1970-01-01. Some systems do handle those time-stamps fine, others
+produce errors.
 
 ** agenda ([[http://orgmode.org/org.html#Agenda-Views][docu]])
 
