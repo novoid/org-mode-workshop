@@ -425,8 +425,9 @@ foo bar
 - to define workflows (see demo below)
 
 - task dependencies with org-depend ([[http://orgmode.org/worg/org-contrib/org-depend.html][docu]])
-  - ~:BLOCKER: otherID~               define blocking task
+  - ~:BLOCKER: an-heading-id another-heading-id~ define blocking task
   - ~:TRIGGER: chain-siblings(NEXT)~  define trigger for setting NEXT
+  - ~:TRIGGER: my-heading-id(NEXT)~   define trigger for specific heading to set to NEXT
 
 **** example with chain siblings
 
@@ -438,6 +439,31 @@ foo bar
 ***** take tour
 
 ***** goto hospital
+
+**** example with triggers and blockers
+
+***** NEXT go for shopping
+:PROPERTIES:
+:ID: my-shopping
+:TRIGGER: my-new-clothes(NEXT) my-next-errands(TODO)
+:END:
+
+After setting this task to DONE, enjoying new clothes get to state
+NEXT and looking out for next errands to TODO.
+
+***** enjoy new clothes
+:PROPERTIES:
+:ID: my-new-clothes
+:END:
+
+***** look out for next errands
+:PROPERTIES:
+:ID: my-next-errands
+:BLOCKER: my-new-clothes
+:END:
+
+I can not finish this task as long as I did not enjoy my new clothes.
+
 *** logging state changes ([[http://orgmode.org/org.html#Tracking-TODO-state-changes][docu]])
 
 - ~!~ in todo state definition

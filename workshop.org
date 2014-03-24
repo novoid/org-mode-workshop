@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# -*- mode: org; coding: utf-8; -*-
 * Header Information                                               :noexport:
 #+TITLE:     Org-mode Teaser Demo
 #+AUTHOR:    Karl Voit
