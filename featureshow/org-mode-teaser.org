@@ -270,6 +270,18 @@ check lists:
 ***** TODO repaint garage
 
 ***** TODO put stuff back in
+*** Taking notes during a meeting or similar ([[http://orgmode.org/org.html#Relative-timer][docu]])
+:PROPERTIES:
+:CREATED:  [2014-04-20 Sun 11:33]
+:END:
+
+- ~C-c C-x .~        (re)start a timer
+- ~C-c C-x -~ or ~M-<RET>~  insert description list item with the current relative time
+- ~C-c C-x ,~        pause/continue
+- ~C-u C-c C-x ,~    stop timer
+
+Bonus feature:
+- ~C-c C-x ;~        count down timer
 
 ** drawers, properties, columns ([[http://orgmode.org/org.html#Properties-and-Columns][docu]])
 
