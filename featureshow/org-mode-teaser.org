@@ -894,6 +894,7 @@ when being *in agenda* mode:
 - ~m~     mark
 - ~u~     unmark
 - ~B~     bulk action
+  - ~S~   *scatter marked TODOs* over the next N days
 
 - clocking
   - ~I~   start
