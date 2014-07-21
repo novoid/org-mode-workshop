@@ -369,12 +369,15 @@ for expanding TAB within Org-mode search for:
 ** Other Demo Sources
 
 - http://orgmode.org/orgcard.txt
+  - cheatsheet
 - https://github.com/vxc/org-mode-ws
 - http://pascal.iiit.ac.in/~itws2/
   - http://pascal.iiit.ac.in/~itws2/topics/org-mode/test.org.txt
 - http://dto.github.com/notebook/orgtutorial.html
 - [[http://orgmode.org/worg/org-tutorials/org-beamer/tutorial.html][Writing Beamer presentations in org-mode]]
 - http://www.suenkler.info/emacs-orgmode.html 
+- http://home.fnal.gov/~neilsen/notebook/orgExamples/org-examples.html
+  - misc real-world examples
 
 ** Contribute
 
