@@ -841,8 +841,8 @@ layout and then the very same example in a row (horizontal) based layout:
   - this way, canceling single events or moving single events is
     possible
 
-- ~13:00-15:15~ or ~13:00+2:15~  time duration
-- ~<2013-11-15 Fri>-<2013-11-17 Sun>~ date duration
+- ~13:00-15:15~ or ~13:00+2:15~  time range
+- ~<2013-11-15 Fri>-<2013-11-17 Sun>~ date range
 - ~C-c C-y~ return time range between dates
 
 - ~UP/DOWN~ on time stamp start/end -> toggle active/inactive
@@ -850,6 +850,17 @@ layout and then the very same example in a row (horizontal) based layout:
 *Note:* please do not use time-stamps prior to [[https://en.wikipedia.org/wiki/Unix_time][UNIX epoch]] which is
 1970-01-01. Some systems do handle those time-stamps fine, others
 produce errors.
+
+*** advanced date/time with sexp ([[http://orgmode.org/manual/Timestamps.html][docu]])
+:PROPERTIES:
+:CREATED:  [2014-07-21 Mon 21:11]
+:END:
+
+To do a thing every x days between two dates, put: 
+: %%(and (diary-cyclic x M1 D1 Y1) (diary-block M1 D1 Y1 M2 D2 Y2)) thing
+
+22:00-23:00 The nerd meeting on every 2nd Thursday of the month
+: <%%(diary-float t 4 2)>
 
 ** agenda ([[http://orgmode.org/org.html#Agenda-Views][docu]])
 
