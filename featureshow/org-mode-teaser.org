@@ -577,7 +577,7 @@ I can not finish this task as long as I did not enjoy my new clothes.
 - ~RET~      next row
 - ~M-LEFT/RIGHT/UP/DOWN~   *moving rows/columns*
 - ~C-c -~    insert vertical bar below
-- ~C-c |~    convert region into table
+- ~C-c |~    convert region into table OR: insert new table
 - ~C-c ^~    sort lines (in region)
 
 - [ ] DEMO: create table
