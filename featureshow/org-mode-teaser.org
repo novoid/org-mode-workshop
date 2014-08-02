@@ -919,6 +919,10 @@ when being *in agenda* mode:
   - ~C-c C-a i~  inherit attachment folder
   - ~C-c C-a o~  *open attachment*
 
+- learn how to create your own agenda views:
+  - http://orgmode.org/org.html#Custom-agenda-views
+  - http://www.reddit.com/r/emacs/comments/2b9obs/org_users_what_did_it_take_you_a_long_time_to/cj4lb35
+
 ** clocking time ([[http://orgmode.org/org.html#Clocking-work-time][docu]])
 
 - ~C-c C-x C-i~     start clock on item
