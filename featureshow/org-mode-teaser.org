@@ -122,7 +122,7 @@ line
 comment
 #+END_COMMENT
 
-*** COMMENT: no exported either
+*** COMMENT no exported either
 
 foo bar
 
