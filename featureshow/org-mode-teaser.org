@@ -695,6 +695,23 @@ layout and then the very same example in a row (horizontal) based layout:
     - column five (~$5~) is the difference between column four to
       column three with one decimal place
 
+Here is another example: how to sum up the numbers of the first column
+so far:
+
+#+NAME: Sum-up-of-other-column
+| Numbers | Sum of numbers so far |
+|---------+-----------------------|
+|       1 |                     1 |
+|       5 |                     6 |
+|      10 |                    16 |
+|      50 |                    66 |
+|     200 |                   266 |
+|    1000 |                  1266 |
+#+TBLFM: @3$2..@>$2=vsum(@2$1..$-1)
+
+The formular can be simplified even more by using a column formula:
+~#+TBLFM: $2=vsum(@2$1..$-1)~ provides the same result as above.
+
 **** row-based
 
 #+NAME: Income2012h
