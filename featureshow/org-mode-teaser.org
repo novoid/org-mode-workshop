@@ -135,6 +135,7 @@ foo bar
   - ~S-TAB~    change buffer visibility
   - ~C-c C-r~  *reveal context*
   - per-file visibility ~#+STARTUP: overview~ and so on: ([[http://orgmode.org/org.html#Visibility-cycling][docu]])
+  - ~C-u C-u TAB~ restore startup visibility
 - motion
   - ~C-c C-n~   *next heading*
   - ~C-c C-p~   *previous heading*
