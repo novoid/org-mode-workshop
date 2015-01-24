@@ -122,7 +122,7 @@ line
 comment
 #+END_COMMENT
 
-*** COMMENT: no exported either
+*** COMMENT no exported either
 
 foo bar
 
@@ -135,6 +135,7 @@ foo bar
   - ~S-TAB~    change buffer visibility
   - ~C-c C-r~  *reveal context*
   - per-file visibility ~#+STARTUP: overview~ and so on: ([[http://orgmode.org/org.html#Visibility-cycling][docu]])
+  - ~C-u C-u TAB~ restore startup visibility
 - motion
   - ~C-c C-n~   *next heading*
   - ~C-c C-p~   *previous heading*
@@ -1141,12 +1142,13 @@ Greek characters \alpha \beta \phi \LaTeX{}  $\varphi$
   - see properties drawer above
   - EXPORT_OPTIONS: see [[http://orgmode.org/manual/Export-options.html][docu]]
 
-** Mobile-org ([[http://orgmode.org/org.html#MobileOrg][docu]])
+** MobileOrg ([[http://orgmode.org/org.html#MobileOrg][docu]])
 
 - great [[http://mobileorg.ncogni.to/][iOS app]]
   - no iOS on my side
-- "advanced-beta" of [[http://wiki.github.com/matburt/mobileorg-android/][Android app]]
-  - Dropbox, ssh, scp, WEBDAV, gpg encryption, ...
+  - does not seem to be maintained any more :-(
+- [[http://wiki.github.com/matburt/mobileorg-android/][Android app]]
+  - sync via Dropbox, ssh, scp, WEBDAV, gpg encryption, ...
 
 #+BEGIN_SRC emacs-lisp
 ;;; http://orgmode.org/org.html#MobileOrg
@@ -1157,6 +1159,9 @@ Greek characters \alpha \beta \phi \LaTeX{}  $\varphi$
 (setq org-mobile-force-id-on-agenda-items nil)
 '(org-mobile-files (quote ("~/share/all/org-mode/contacts.org" "~/data/share/all/org-mode/hardware.org" )))
 #+END_SRC
+
+- http://www.orgzly.com/ (since approx. 2015-01)
+  - promising new app
 
 ** many many many many more features!
 
