@@ -122,6 +122,17 @@ line
 comment
 #+END_COMMENT
 
+- not (yet) working and edge cases:
+  - /*combination*/
+  - */combination/*
+  - _*combination*_
+  - *_combination_*
+  - =*combination*=
+  - ~C:\a\very\old\DOS\path~
+  - http://orgmode.org
+  - [[http://orgmode.org][orgmode-Homepage]]
+  - [[http://orgmode.org][*orgmode* /Homepage/]]
+
 *** COMMENT no exported either
 
 foo bar
