@@ -1119,7 +1119,7 @@ date
 : Executed by vk on karl-voit.at in /tmp
 : Mon Nov  2 20:05:19 CET 2015
 
-See interactive shell in buffer: ~tramp/scp vk@karl-voit.at~
+See interactive shell in buffer: ~2015-11-02-ssh-testsession~
 
 **** table using python function to calculate values 
 
