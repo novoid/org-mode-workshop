@@ -1069,6 +1069,58 @@ Using result set "directories" from above as "dirs" in R below:
   pie(dirs[,1], labels = dirs[,2])
 #+end_src
 
+**** remote shell session
+
+- Examples in this session is inspired by [[https://www.youtube.com/watch?v=dljNabciEGg&feature=youtu.be][a great DevOps-demo video]] by
+  Howard Abrams ([[https://github.com/howardabrams/literate-devops-demo/blob/master/presentation.org][Demo material]])
+
+Executing shell commands:
+
+#+BEGIN_SRC sh
+echo "Executed by `whoami` on `hostname` in `pwd`"
+#+END_SRC
+
+#+RESULTS:
+: Executed by karl on WORKINGDESKTOP in /cygdrive/c/Users/karl/
+
+Doing something as root:
+
+#+BEGIN_SRC sh :dir /sudo::
+apt-get update
+#+END_SRC
+
+Switching to a remote host:
+
+#+BEGIN_SRC sh
+ssh vk@karl-voit.at 'echo "Executed by `whoami` on `hostname` in `pwd`"'
+#+END_SRC
+
+#+RESULTS:
+: Executed by vk on karl-voit.at in /home/vk
+
+***** Even more convenient remote access
+:PROPERTIES:
+:results: output
+:session: 2015-11-02-ssh-testsession
+:dir:     /vk@karl-voit.at:/tmp
+:END:
+
+Note: ~results~, ~dir~, and ~session~ parameters for babel are placed
+in the ~PROPERTIES~ drawer above.
+
+Do stuff remote:
+
+#+begin_src sh
+echo "Executed by `whoami` on `hostname` in `pwd`"
+date
+#+end_src
+
+#+RESULTS:
+: Executed by vk on karl-voit.at in /tmp
+: Mon Nov  2 20:05:19 CET 2015
+
+See interactive shell in buffer: ~tramp/scp vk@karl-voit.at~
+
 **** table using python function to calculate values 
 
 #+NAME: epoch2day
