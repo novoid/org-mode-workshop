@@ -1100,9 +1100,7 @@ ssh vk@karl-voit.at 'echo "Executed by `whoami` on `hostname` in `pwd`"'
 
 ***** Even more convenient remote access
 :PROPERTIES:
-:results: output
-:session: 2015-11-02-ssh-testsession
-:dir:     /vk@karl-voit.at:/tmp
+:header-args:sh: :results output :session 2015-11-02-ssh-testsession :dir /vk@karl-voit.at:/tmp
 :END:
 
 Note: ~results~, ~dir~, and ~session~ parameters for babel are placed
