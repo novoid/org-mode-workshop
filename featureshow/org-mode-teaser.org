@@ -146,7 +146,7 @@ foo bar
   - ~S-TAB~    change buffer visibility
   - ~C-c C-r~  *reveal context*
   - per-file visibility ~#+STARTUP: overview~ and so on: ([[http://orgmode.org/org.html#Visibility-cycling][docu]])
-  - ~C-u C-u TAB~ restore startup visibility
+  - ~C-u C-u TAB~ *restore startup visibility*
 - motion
   - ~C-c C-n~   *next heading*
   - ~C-c C-p~   *previous heading*
@@ -665,7 +665,7 @@ layout and then the very same example in a row (horizontal) based layout:
 | Bob   |                     17 |            20.4 |        21 |        0.6 |
 |-------+------------------------+-----------------+-----------+------------|
 | sum   |                     51 |                 |           |        1.8 |
-#+TBLFM: @>$5=vsum(@I..@II)::@>$3=string("")::$1=remote(Income2012v, @@#$1)::$2=remote(Income2012v, @@#$3)::$3=1.2 * remote(Income2012v, @@#$3);%.1f::$5=$4-$3;%.1f
+#+TBLFM: @>$5=vsum(@I..@II)::@>$3=string("")::$1='(identity remote(Income2012v, @@#$1))::$2='(identity remote(Income2012v, @@#$3))::$3=1.2 * remote(Income2012v, @@#$3);%.1f::$5=$4-$3;%.1f
 
 - all formulas explained in detail:
   - ~@>$5=vsum(@I..@II)~
@@ -679,14 +679,16 @@ layout and then the very same example in a row (horizontal) based layout:
     - otherwise it would get 1.2 times the value of corresponding
       column of table Income2012v as well - I chose not to want this
       sum in this column
-  - ~$1=remote(Income2012v, @@#$1)~
+  - ~$1='(identity remote(Income2012v, @@#$1))~
     - values: ~Joe~ until ~sum~
     - copy content of the first column of table "Income2012v"
-      (~remote(Income2012v, @@#$1)~) to the first column in this table
+      (Lisp formula ~'(identity remote(Income2012v, @@#$1))~) to the first
+      column in this table
       (~$1~)
+    - the "identity" statement prevents calc from interpreting the content
     - this is because I am too lazy to enter all names once again :-)
     - see also [[http://orgmode.org/worg/org-hacks.html#field-coordinates-in-formulas][Org-hacks]] for field formulas
-  - ~$2=remote(Income2012v, @@#$3)~
+  - ~$2='(identity remote(Income2012v, @@#$3))~
     - values: ~10; 24; 17; 51~
     - copy the content of the second column of table "Income2012v" to the
       second column in this table
