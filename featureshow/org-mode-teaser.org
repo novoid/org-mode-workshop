@@ -735,24 +735,24 @@ The formular can be simplified even more by using a column formula:
 
 #+NAME: comparison-table-horizontal
 |                  |  Joe | Alice |  Bob |  sum |
-| 2012 Income June |   10 |    24 |   17 |   51 |
+| Income June 2012 |   10 |    24 |   17 |   51 |
 | plus 20 percent  | 12.0 |  28.8 | 20.4 | 60.0 |
 | June 2013        |   11 |    31 |   21 |      |
 | Difference       | -1.0 |   2.2 |  0.6 |  1.8 |
-#+TBLFM: @>$>=vsum(@5$2..@5$4)::@1$2..@1$4=remote(Income2012h, @1$$#)::@2=remote(Income2012h, @3$$#)::@3$2..@3$4=1.2 * remote(Income2012h, @3$$#);%.1f::@5$2..@5$4=@4-@3;%.1f
+#+TBLFM: @>$>=vsum(@5$2..@5$4)::@1$2..@1$4='(identity remote(Income2012h, @1$$#))::@2='(identity remote(Income2012h, @3$$#))::@3$2..@3$4=1.2 * remote(Income2012h, @3$$#);%.1f::@5$2..@5$4=@4-@3;%.1f
 
 - all formulas explained in detail:
   - ~@>$>=vsum(@5$2..@5$4)~
     - value: ~1.8~
     - last column in last row (~@>$>~) is the vector-sum (~vsum~) of
       column two to four of fifth row (~@5$2..@5$4~)
-  - ~@1$2..@1$4=remote(Income2012h, @1$$#)~
+  - ~@1$2..@1$4='(identity remote(Income2012h, @1$$#))~
     - values: ~Joe | Alice |  Bob |  sum~
     - column two to four of first row (~@1$2..@1$4~) are copied from
       the corresponding fields of the first row (~@1$$#~) of table
       "Income2012h"
     - see also [[http://orgmode.org/worg/org-hacks.html#field-coordinates-in-formulas][Org-hacks]] for field formulas
-  - ~@2=remote(Income2012h, @3$$#)~
+  - ~@2='(identity remote(Income2012h, @3$$#))~
     - values: ~2012 Income June |   10 |    24 |   17 |   51~
     - the second row (~@2~) is copied from the corresponding fields of
       the first row (~@1$$#~) of table "Income2012h"
