@@ -98,7 +98,7 @@ configuration:
 
 : (add-to-list 'Info-additional-directory-list "~/.emacs.d/<YOURDIRECTORY>/org-mode/doc/")
 
-OR: install Org-mode documentation to your system with: 
+OR: install Org-mode documentation to your system with:
 
 : cd $ORGMODEDIRECTORY && sudo make install-info
 
@@ -256,6 +256,8 @@ check lists:
 
 - ~M-S-RET~  new item with checkbox
 - ~C-c C-*~  checkboxes become TODOs
+- ~C-c C-C~  toggle checkboxes between ~[X]~ and ~[ ]~
+- ~C-u C-u C-c C-C~  toggle checkboxes between ~[ ]~ and ~[-]~
 
 - Clean out garage
   1. [ ] get stuff out
@@ -851,7 +853,7 @@ The formular can be simplified even more by using a column formula:
 - ~C-c .~    *insert active* <2012-04-23 Mon>  (with ~C-u~: <2012-04-23 Mon 19:14>)
 - ~C-c !~    insert inactive [2012-04-23 Mon]  (with ~C-u~: [2012-04-23 Mon 19:14])
 - ~S-RIGHT/LEFT/UP/DOWN~  interactively change timestamp
-- ~C-c <~    *insert today* 
+- ~C-c <~    *insert today*
 - ~C-c C-o~  open agenda for current timestamp
 
 - ~C-c C-d~  *insert DEADLINE*
@@ -887,7 +889,7 @@ produce errors.
 :CREATED:  [2014-07-21 Mon 21:11]
 :END:
 
-To do a thing every x days between two dates, put: 
+To do a thing every x days between two dates, put:
 : %%(and (diary-cyclic x M1 D1 Y1) (diary-block M1 D1 Y1 M2 D2 Y2)) thing
 
 22:00-23:00 The nerd meeting on every 2nd Thursday of the month
@@ -1026,7 +1028,7 @@ CLOCK: [2012-11-17 Sat 16:25]--[2012-11-18 Sun 19:25] => 27:00
 
 **** shell
 
-#+BEGIN_SRC sh 
+#+BEGIN_SRC sh
 pwd
 #+END_SRC
 
@@ -1121,7 +1123,7 @@ date
 
 See interactive shell in buffer: ~2015-11-02-ssh-testsession~
 
-**** table using python function to calculate values 
+**** table using python function to calculate values
 
 #+NAME: epoch2day
 #+BEGIN_SRC python :results output :var epoch=1262675465119
@@ -1160,11 +1162,11 @@ Greek characters \alpha \beta \phi \LaTeX{}  $\varphi$
   - ~`~         insert math symbols (menu)
 
 #+BEGIN_LaTeX
-  
+
   \section{Section Title}
-  
+
   This is \emph{emphasized} and $y=x^2$ is an equation.
-  
+
 #+END_LaTeX
 
 ** export formats ([[http://orgmode.org/org.html#Exporting][docu]])
@@ -1189,7 +1191,7 @@ Greek characters \alpha \beta \phi \LaTeX{}  $\varphi$
 - [ ] DEMO: export this as PDF (plain)
 - [ ] DEMO: export this as PDF (beamer)
 
-*** Export options ([[http://orgmode.org/manual/Export-options.html][docu]])  
+*** Export options ([[http://orgmode.org/manual/Export-options.html][docu]])
 :PROPERTIES:
 :EXPORT_FILE_NAME: my-file-name
 :EXPORT_TITLE: the title to be shown (default is the heading name)
