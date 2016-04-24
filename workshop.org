@@ -3,7 +3,7 @@
 #+TITLE:     Org-mode Teaser Demo
 #+AUTHOR:    Karl Voit
 #+EMAIL:     tools@Karl-Voit.at
-#+DATE:      2012-04-23 Mon
+#+DATE:      2016-04-24 Mon
 #+DESCRIPTION:
 #+KEYWORDS:
 #+LANGUAGE:  en
@@ -12,21 +12,21 @@
 #+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
 #+EXPORT_SELECT_TAGS: export
 #+EXPORT_EXCLUDE_TAGS: noexport
-#+LINK_UP:   
-#+LINK_HOME: 
+#+LINK_UP:
+#+LINK_HOME:
 #+XSLT:
 
 #+STARTUP: hidestars
 
 #+STARTUP: overview   (or: showall, content, showeverything)
-http://orgmode.org/org.html#Visibility-cycling
+http://orgmode.org/org.html#Visibility-cycling  [[info:org#Visibility%20cycling][info:org#Visibility cycling]]
 
 #+TODO: TODO(t) NEXT(n) STARTED(s) WAITING(w@/!) SOMEDAY(S!) | DONE(d!/!) CANCELLED(c@/!)
-http://orgmode.org/org.html#Per_002dfile-keywords
+http://orgmode.org/org.html#Per_002dfile-keywords  [[info:org#Per-file%20keywords][info:org#Per-file keywords]]
 
 #+TAGS: important(i) private(p)
 #+TAGS: @HOME(h) @OFFICE(o)
-http://orgmode.org/org.html#Setting-tags
+http://orgmode.org/org.html#Setting-tags  [[info:org#Setting%20tags][info:org#Setting tags]]
 
 #+NOstartup: beamer
 #+NOLaTeX_CLASS: beamer
@@ -41,7 +41,7 @@ http://orgmode.org/org.html#Setting-tags
 - drinking
   - vending machines for pops and coffee
 
-** About me 
+** About me
 
 - Flipchart
 - before 2003: studied Telematics at [[http://www.TUGraz.at][Graz University of Technology]]
@@ -80,7 +80,7 @@ http://orgmode.org/org.html#Setting-tags
 
 ** Course Material
 
-- Course material is (or will be) online at [[https://github.com/novoid/org-mode-workshop][org-mode-workshop on github]]
+- Course material is online at [[https://github.com/novoid/org-mode-workshop][org-mode-workshop on github]]
 
 ** Org-mode Principles and Advantages
 
@@ -365,7 +365,7 @@ for expanding TAB within Org-mode search for:
 - https://github.com/novoid/orgmode-ACM-template
 - http://orgmode.org/worg/org-papers.html
   - http://orgmode.org/worg/org-contrib/babel/uses.html#sec-6
- 
+
 ** Other Demo Sources
 
 - http://orgmode.org/orgcard.txt
@@ -375,7 +375,7 @@ for expanding TAB within Org-mode search for:
   - http://pascal.iiit.ac.in/~itws2/topics/org-mode/test.org.txt
 - http://dto.github.com/notebook/orgtutorial.html
 - [[http://orgmode.org/worg/org-tutorials/org-beamer/tutorial.html][Writing Beamer presentations in org-mode]]
-- http://www.suenkler.info/emacs-orgmode.html 
+- http://www.suenkler.info/emacs-orgmode.html
 - http://home.fnal.gov/~neilsen/notebook/orgExamples/org-examples.html
   - misc real-world examples
 

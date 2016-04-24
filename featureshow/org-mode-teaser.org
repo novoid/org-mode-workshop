@@ -3,7 +3,7 @@
 #+TITLE:     Org-mode Teaser Demo
 #+AUTHOR:    Karl Voit
 #+EMAIL:     tools@Karl-Voit.at
-#+DATE:      2013-10-06 Sun
+#+DATE:      2016-04-24
 #+DESCRIPTION:
 #+KEYWORDS:
 #+LANGUAGE:  en
@@ -19,14 +19,14 @@
 #+STARTUP: hidestars
 
 #+STARTUP: overview   (or: showall, content, showeverything)
-http://orgmode.org/org.html#Visibility-cycling
+http://orgmode.org/org.html#Visibility-cycling  [[info:org#Visibility%20cycling][info:org#Visibility cycling]]
 
 #+TODO: TODO(t) NEXT(n) STARTED(s) WAITING(w@/!) SOMEDAY(S!) | DONE(d!/!) CANCELLED(c@/!)
-http://orgmode.org/org.html#Per_002dfile-keywords
+http://orgmode.org/org.html#Per_002dfile-keywords  [[info:org#Per-file%20keywords][info:org#Per-file keywords]]
 
 #+TAGS: important(i) private(p)
 #+TAGS: @HOME(h) @OFFICE(o)
-http://orgmode.org/org.html#Setting-tags
+http://orgmode.org/org.html#Setting-tags  [[info:org#Setting%20tags][info:org#Setting tags]]
 
 #+NOstartup: beamer
 #+NOLaTeX_CLASS: beamer
@@ -400,7 +400,9 @@ target:
 - ~C-c l~    store link (also in many other buffer types: [[http://orgmode.org/org.html#Handling-links][docu]])
 - ~C-c C-l~  *inserting link* (or edit existing link)
 - ~C-u C-c C-l~  file link (shortcut)
-- ~C-c C-o~  open link
+- ~C-c C-o~  *open link*
+- ~C-c C-x C-n~ goto *next link*
+- ~C-c C-x C-p~ goto *previous link*
 
 - "radio targets" are auto-links created by target like ~<<<target name>>>~
   - all occurrences of "target name" will be links
@@ -1003,6 +1005,8 @@ CLOCK: [2012-11-17 Sat 16:25]--[2012-11-18 Sun 19:25] => 27:00
 #+BEGIN_SRC python :results output
   def foo(argument):
        print "Hello World"
+
+  foo(42)
  #+END_SRC
 
 ** babel ([[http://orgmode.org/org.html#Library-of-Babel][docu]])
@@ -1186,6 +1190,7 @@ Greek characters \alpha \beta \phi \LaTeX{}  $\varphi$
 - Freemind
 - XOXO
 - iCalendar
+- [[http://pandoc.org/][Pandoc]]
 - ...
 
 - [ ] DEMO: export this as PDF (plain)
