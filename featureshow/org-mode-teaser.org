@@ -76,11 +76,11 @@ http://orgmode.org/org.html#Setting-tags  [[info:org#Setting%20tags][info:org#Se
 
 [[http://orgmode.org/worg/org-tutorials/orgtutorial_dto.html#sec-1-2][Activation of Org-mode (external Tutorial)]]:
 #+BEGIN_SRC emacs-lisp
-(require 'org-install)
-(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
-(define-key global-map "\C-cl" 'org-store-link)
-(define-key global-map "\C-ca" 'org-agenda)
-(setq org-log-done t)
+(add-to-list 'auto-mode-alist '("\\.\\(org\\|org_archive\\|txt\\)$" . org-mode))
+(define-key global-map "\C-ca" 'org-agenda)     ;; by convention: "C-c a" opens agenda
+(define-key global-map "\C-cc" 'org-capture)    ;; by convention: "C-c c" captures stuff
+(define-key global-map "\C-cl" 'org-store-link) ;; by convention: "C-c l" stores a link to this heading
+(setq org-log-done t) ;; if you want to log DONE-states to the :LOGBOOK:-drawer
 #+END_SRC
 
 - Org-mode *minor mode* (structure editing and lists) ~orgstruct-mode~
@@ -1141,11 +1141,11 @@ print datetimestamp.strftime('[%Y-%m-%d %a %H:%M:%S]')
 #+RESULTS: epoch2day
 : [2010-01-05 Tue 07:11:05]
 
-|  *UNIX epoch* | *time-stamp*              |
-|---------------+---------------------------|
-| 1262675465119 | [2010-01-05 Tue 07:11:05] |
-|    1234567890 | [2009-02-13 Fri 23:31:30] |
-|    1000000000 | [2001-09-09 Sun 01:46:40] |
+|  *UNIX epoch* | *time-stamp*           |
+|---------------+------------------------|
+| 1262675465119 | [2010-01-05 Tue 07:11] |
+|    1234567890 | [2009-02-13 Fri 23:31] |
+|    1000000000 | [2001-09-09 Sun 01:46] |
 #+TBLFM: $2='(sbe epoch2day (epoch $1))
 
 ** LaTeX ([[http://orgmode.org/org.html#Embedded-LaTeX][docu]])
