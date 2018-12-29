@@ -166,6 +166,7 @@ foo bar
   - checkbox: activate/deactivate, heading: tags, tables:
     re-calculate, jump footnote and back, update tables, update
     TODO-count, ...
+- ~C-c C-x b~   *open sub-tree in separate buffer* (org-tree-to-indirect-buffer)
 
 *** Creating
 
@@ -204,7 +205,7 @@ This is a quite boring text just to show some body content.
 - selective headlines using :crypt:
 - ~org-decrypt-entry~
 
-*** time stamps when taking notes ([[http://orgmode.org/manual/Relative-timer.html][docu]])
+*** time stamps when taking notes ([[http://orgmode.org/manual/Relative-timer.html][docu]], [[info:org#Timers][info:org#Timers]])
 
 - ~C-c C-x .~   start timer
 - ~C-c C-x -~   insert list item with time
@@ -397,7 +398,7 @@ target:
 - custom links: [[contact:John%20Smith][contact:John Smith]]
   - [[http://orgmode.org/org.html#Link-abbreviations][docu: link abbrevations]]
 
-- ~C-c l~    store link (also in many other buffer types: [[http://orgmode.org/org.html#Handling-links][docu]])
+- ~C-c l~    *store link* (also in many other buffer types: [[http://orgmode.org/org.html#Handling-links][docu]])
 - ~C-c C-l~  *inserting link* (or edit existing link)
 - ~C-u C-c C-l~  file link (shortcut)
 - ~C-c C-o~  *open link*
@@ -965,6 +966,9 @@ when being *in agenda* mode:
 - ~C-c C-x C-d~     display total subtree times
 - ~C-c C-c~         remove displayed times
 - ~C-c C-x C-r~     insert/update table with report
+
+- please do read [[http://irreal.org/blog/?p=5307][Irreal: Org Clocking and Idle Time]] for handling idle
+  time for clocking
 
 *** example sub-hierarchy with report
 
