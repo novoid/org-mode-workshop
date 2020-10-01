@@ -442,7 +442,7 @@ foo bar
   - ~!~   timestamp
   - ~@~   add note
 
-*** making dependencies explicit
+*** making dependencies explicit: org-depend
 
 - simple, ordered method with PROPERTIES drawer:
 : :ORDERED: t
@@ -489,6 +489,42 @@ NEXT and looking out for next errands to TODO.
 :PROPERTIES:
 :ID: my-next-errands
 :BLOCKER: my-new-clothes
+:END:
+
+I can not finish this task as long as I did not enjoy my new clothes.
+
+
+*** making dependencies explicit: org-edne
+
+- [[https://www.nongnu.org/org-edna-el/][org-edna]]: bit more complex syntax compared to org-depend but also more powerful
+
+- same general approach using ~:BLOCKER:~ and ~:TRIGGER:~ properties
+
+- task dependencies with org-edna:
+  - ~:BLOCKER: ids("an-heading-id" "another-heading-id")~ define blocking task
+  - ~:BLOCKER: ids("id:an-heading-id" "another-heading-id")~ same example but navigable id
+  - ~:TRIGGER: ids("my-heading-id") todo!(NEXT) scheduled!("++3d")~   define trigger for specific heading to set to NEXT and schedule 3 days later
+
+**** example with triggers and blockers
+
+***** NEXT go for shopping
+:PROPERTIES:
+:ID: my-shopping
+:TRIGGER: ids("my-new-clothes") todo!(NEXT) ids("id:my-next-errands") todo!(TODO)
+:END:
+
+After setting this task to DONE, enjoying new clothes get to state
+NEXT and looking out for next errands to TODO.
+
+***** enjoy new clothes
+:PROPERTIES:
+:ID: my-new-clothes
+:END:
+
+***** look out for next errands
+:PROPERTIES:
+:ID: my-next-errands
+:BLOCKER: ids("my-new-clothes")
 :END:
 
 I can not finish this task as long as I did not enjoy my new clothes.
