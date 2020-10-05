@@ -494,7 +494,7 @@ NEXT and looking out for next errands to TODO.
 I can not finish this task as long as I did not enjoy my new clothes.
 
 
-*** making dependencies explicit: org-edne
+*** making dependencies explicit: org-edna
 
 - [[https://www.nongnu.org/org-edna-el/][org-edna]]: bit more complex syntax compared to org-depend but also more powerful
 
