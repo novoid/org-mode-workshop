@@ -1053,10 +1053,12 @@ CLOCK: [2012-11-17 Sat 16:25]--[2012-11-18 Sun 19:25] => 27:00
 
 #+BEGIN_SRC python :results output
   def foo(argument):
-       print "Hello World"
+       print ("Hello World")
 
   foo(42)
  #+END_SRC
+
+ #+RESULTS:
 
 ** babel ([[http://orgmode.org/org.html#Library-of-Babel][docu]])
 
@@ -1184,7 +1186,7 @@ time = epoch
 import datetime
 strtime = str(time)
 datetimestamp = datetime.datetime.utcfromtimestamp(int(strtime[:10]))
-print datetimestamp.strftime('[%Y-%m-%d %a %H:%M:%S]')
+print(datetimestamp.strftime('[%Y-%m-%d %a %H:%M:%S]'))
 #+END_SRC
 
 #+RESULTS: epoch2day
