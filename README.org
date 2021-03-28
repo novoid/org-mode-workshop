@@ -1,14 +1,33 @@
-* Org-mode Workshop
+* Org mode Workshop
 
 In November 2012, I was lucky enough to be able to conduct a workshop
-about [[http://orgmode.org][Emacs Org-mode]] at [[http://www.TUGraz.at][Graz University of Technology]], Austria.
+about [[http://orgmode.org][Emacs Org mode]] at [[http://www.TUGraz.at][Graz University of Technology]], Austria.
 
 This repository contains all relevant material I collected and created
 for this and possible future workshops on this great topic.
 
-I would like to thank all contributors to Org-mode for this wonderful
-"virtual box of Lego-bricks": Org-mode lets me build a huge variety of
+I would like to thank all contributors to Org mode for this wonderful
+"virtual box of Lego-bricks": Org mode lets me build a huge variety of
 great solutions, so that I've got the feeling, that I only start to
 see the beginning!
 
-Karl
+If you are interested in a demo file with demo data, you can
+take a [[https://github.com/novoid/org-mode-demodata][look at this repository]].
+
+* How to Thank Me
+
+I'm glad you like my tools. If you want to support me:
+
+- Send old-fashioned *postcard* per snailmail - I love personal feedback!
+  - see [[http://tinyurl.com/j6w8hyo][my address]]
+- Send feature wishes or improvements as an issue on GitHub
+- Create issues on GitHub for bugs
+- Contribute merge requests for bug fixes
+- Check out my other cool [[https://github.com/novoid][projects on GitHub]]
+
+* Local Variables                                                  :noexport:
+# Local Variables:
+# mode: auto-fill
+# mode: flyspell
+# eval: (ispell-change-dictionary "en_US")
+# End:
